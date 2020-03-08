@@ -1,4 +1,3 @@
 # gis
-A gis project
-<br>
-An IDEA project
+* ## Details
+  > A __*GIS-related*__ system for corn growth and environmental __*data management*__.
