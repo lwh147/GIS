@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class PageController {
 
-    //访问管理员登陆页面
-    @RequestMapping("/adminLogin")
+    //访问项目根目录时转到管理员登陆页面
+    @RequestMapping("/")
     public String AdminLogin() {
         return "adminLogin";
     }
@@ -30,7 +30,6 @@ public class PageController {
     @RequestMapping("/adminValidate")
     @ResponseBody
     public String adminValidate(@RequestBody String jsonStr){
-        System.out.println(jsonStr);
         return "0";
     }
 

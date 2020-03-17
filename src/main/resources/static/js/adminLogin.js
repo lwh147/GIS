@@ -208,7 +208,7 @@ function loadModals() {
         async: false,
         dataType: "html",
         success: function (data) {
-            $(".container-fluid").append(data);
+            $("#modalContainer").append(data);
         },
         error: function (error) {
             alert("----ajax请求加载模态框执行出错！错误信息如下：----\n" + error.responseText);
