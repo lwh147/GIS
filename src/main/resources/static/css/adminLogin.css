@@ -3,7 +3,7 @@
  * 时间: 2020.3.6
  */
 
-/*设置页面背景图片*/
+/*页面背景图片*/
 body {
     background-image: url("../src/adminLogin_bg.jpg");
     background-position: center center;
@@ -11,7 +11,7 @@ body {
     background-attachment: fixed;
     background-size: cover;
 }
-/*设置登录框所在区域*/
+/*登录框所在区域*/
 #loginFormArea {
     margin-top: 50px;
     background-color: white;
@@ -21,14 +21,14 @@ body {
     padding-left: 30px;
     padding-right: 30px;
 }
-/*设置登录框标题*/
+/*登录框标题*/
 #loginFormTitle {
     border-bottom: 1px solid #e6e6e6;
     margin-bottom: 20px;
     margin-left: -20px;
     margin-right: -20px;
 }
-/*设置按钮*/
+/*按钮*/
 #loginForm button {
     width: 100%;
     margin-top: 10px;

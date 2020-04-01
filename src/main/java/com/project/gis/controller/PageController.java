@@ -17,7 +17,7 @@ public class PageController {
     //访问主界面
     @RequestMapping("/adminIndex")
     public String AdminIndex() {
-        return "adminIndex";
+        return "index";
     }
 
     //加载管理员登陆页面模态框

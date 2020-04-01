@@ -125,7 +125,7 @@ $(function () {
                         }
                     }
                     //登陆成功，跳转到主页
-                    $(window).attr("location", "adminIndex");
+                    $(window).attr("location", "index");
                 }else if(checkResult === "0"){
                     //验证失败，加载并显示提示用户验证失败的模态框
                     let loginErrorModal = $("#loginErrorModal");

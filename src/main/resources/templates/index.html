@@ -1,6 +1,6 @@
 <!--
  作者: lwh
- 时间: 2020.2.26
+ 时间: 2020.3.20
 -->
 <!DOCTYPE html>
 <!-- 此处采用了html原生的引入方式并结合thymeleaf的引入方式：
@@ -14,7 +14,7 @@
     <!-- 设置页面初始化大小和缩放值 -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 页面标题 -->
-    <title>登录</title>
+    <title>首页——玉米的生长及环境数据管理系统</title>
     <!-- 引入网页图标 -->
     <link rel="icon" href="../static/src/icon.png" th:href="@{/src/icon.png}" sizes="32x32">
     <!-- 引入bootstrap默认css样式 -->
@@ -27,13 +27,33 @@
     <script type="text/javascript" src="../static/extlib/bootstrap-3.3.7/js/bootstrap.min.js" th:src="@{/extlib/bootstrap-3.3.7/js/bootstrap.min.js}"></script>
     <script type="text/javascript" src="../static/extlib/bootstrapvalidator-0.5.3/js/bootstrapValidator.min.js" th:src="@{/extlib/bootstrapvalidator-0.5.3/js/bootstrapValidator.min.js}"></script>
     <!-- 引入jquery的md5加密插件 -->
-    <script type="test/javascript" src="../static/extlib/jquerymd5/md5.pro.js" th:src="@{/extlib/jquerymd5/md5.pro.js}"></script>
+    <!-- <script type="test/javascript" src="../static/extlib/jquerymd5/md5.pro.js" th:src="@{/extlib/jquerymd5/md5.pro.js}"></script> -->
     <!-- 引入自己的js/css库文件-->
     <link rel="stylesheet" href="../static/css/adminLogin.css" th:href="@{/css/adminLogin.css}">
     <script type="text/javascript" src="../static/js/adminLogin.js" th:src="@{/js/adminLogin.js}"></script>
-    <script src="../static/js/myLib.js" th:src="@{/js/myLib.js}"></script>
+    <!-- <script src="../static/js/myLib.js" th:src="@{/js/myLib.js}"></script> -->
 </head>
 <body>
+ <div class="container-fluid">
+     <!-- 左侧导航栏 -->
+     <div id="index-left-navbar-container">
 
+     </div>
+     <!-- 右侧 -->
+     <div id="index-right-container">
+         <!-- 右侧上方状态栏 -->
+         <div class="row" id="index-right-top-statusbar-container">
+
+         </div>
+         <!-- 右侧网页主体部分 -->
+         <div class="row" id="index-right-body-container">
+
+         </div>
+         <!-- 右侧下方页脚 -->
+         <div class="row" id="index-right-foot-container">
+
+         </div>
+     </div>
+ </div>
 </body>
 </html>
