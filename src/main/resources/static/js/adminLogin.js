@@ -37,6 +37,8 @@ $(function () {
         $("#loginForm").data("bootstrapValidator").resetForm(true);
         //取消记住密码的选择，因为记住密码的checkbox未添加bootstrapValidator验证
         $("input[name='rememberCheckbox']").prop("checked", false);
+        //更改登录按钮的登陆状态
+        $("#loginButton").button("reset");
     });
 
     //开启bootstrapValidator进行表单验证
@@ -87,6 +89,8 @@ $(function () {
         //注册表单被提交后且验证成功的事件的监听函数以使用ajax提交表单数据
         //阻止正常提交表单
         e.preventDefault();
+        //更改登录按钮的登陆状态
+        $("#loginButton").button("loading");
         //获取bootstrapValidator实例
         let bv = $(e.target).data("bootstrapValidator");
         //用base64加密用户名和密码
@@ -139,6 +143,8 @@ $(function () {
                         bv.updateStatus("userNameInput", "NOT_VALIDATED");
                         bv.updateStatus("passwordInput", "NOT_VALIDATED");
                     });
+                    //更改登录按钮的登陆状态
+                    $("#loginButton").button("reset");
                 }else{
                     alert("登录校验结果出错！");
                 }

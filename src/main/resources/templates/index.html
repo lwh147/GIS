@@ -27,32 +27,23 @@
     <script type="text/javascript" src="../static/extlib/bootstrap-3.3.7/js/bootstrap.min.js" th:src="@{/extlib/bootstrap-3.3.7/js/bootstrap.min.js}"></script>
     <script type="text/javascript" src="../static/extlib/bootstrapvalidator-0.5.3/js/bootstrapValidator.min.js" th:src="@{/extlib/bootstrapvalidator-0.5.3/js/bootstrapValidator.min.js}"></script>
     <!-- 引入jquery的md5加密插件 -->
-    <!-- <script type="test/javascript" src="../static/extlib/jquerymd5/md5.pro.js" th:src="@{/extlib/jquerymd5/md5.pro.js}"></script> -->
-    <!-- 引入自己的js/css库文件-->
-    <link rel="stylesheet" href="../static/css/adminLogin.css" th:href="@{/css/adminLogin.css}">
-    <script type="text/javascript" src="../static/js/adminLogin.js" th:src="@{/js/adminLogin.js}"></script>
-    <!-- <script src="../static/js/myLib.js" th:src="@{/js/myLib.js}"></script> -->
+     <script type="test/javascript" src="../static/extlib/jquerymd5/md5.pro.js" th:src="@{/extlib/jquerymd5/md5.pro.js}"></script>
+    <!-- 引入自己的css库文件-->
+    <link rel="stylesheet" href="../static/css/index.css" th:href="@{/css/index.css}">
+    <!-- 引入自己的js库文件 -->
+    <script type="text/javascript" src="../static/js/myLib.js" th:src="@{/js/myLib.js}"></script>
+    <script type="text/javascript" src="../static/js/index.js" th:src="@{/js/index.js}"></script>
 </head>
 <body>
+ <!-- 网页基本容器-->
  <div class="container-fluid">
-     <!-- 左侧导航栏 -->
-     <div id="index-left-navbar-container">
-
+     <!-- 网页上部导航栏容器 -->
+     <div class="row" id="index-head-navbar-container">
+        <!-- 动态加载 -->
      </div>
-     <!-- 右侧 -->
-     <div id="index-right-container">
-         <!-- 右侧上方状态栏 -->
-         <div class="row" id="index-right-top-statusbar-container">
-
-         </div>
-         <!-- 右侧网页主体部分 -->
-         <div class="row" id="index-right-body-container">
-
-         </div>
-         <!-- 右侧下方页脚 -->
-         <div class="row" id="index-right-foot-container">
-
-         </div>
+     <!-- 网页主体容器 -->
+     <div class="row" id="index-body-container">
+         <!-- 动态加载 -->
      </div>
  </div>
 </body>

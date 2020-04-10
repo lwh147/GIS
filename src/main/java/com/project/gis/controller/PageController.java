@@ -15,7 +15,7 @@ public class PageController {
     }
 
     //访问主界面
-    @RequestMapping("/adminIndex")
+    @RequestMapping("/index")
     public String AdminIndex() {
         return "index";
     }
@@ -26,11 +26,17 @@ public class PageController {
         return "adminLogin_modal";
     }
 
+    //加载系统主页导航栏
+    @RequestMapping("/index_navbar")
+    public String index_navbar() {
+        return "index_navbar";
+    }
+
     //处理管理员登陆请求
     @RequestMapping("/adminValidate")
     @ResponseBody
     public String adminValidate(@RequestBody String jsonStr){
-        return "0";
+        return "1";
     }
 
 }
