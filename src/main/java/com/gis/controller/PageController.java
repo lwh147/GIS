@@ -1,9 +1,7 @@
-package com.project.gis.controller;
+package com.gis.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class PageController {
@@ -14,7 +12,7 @@ public class PageController {
         return "adminLogin";
     }
 
-    //访问主界面
+    //加载主界面
     @RequestMapping("/index")
     public String AdminIndex() {
         return "index";
@@ -30,13 +28,6 @@ public class PageController {
     @RequestMapping("/index_navbar")
     public String index_navbar() {
         return "index_navbar";
-    }
-
-    //处理管理员登陆请求
-    @RequestMapping("/adminValidate")
-    @ResponseBody
-    public String adminValidate(@RequestBody String jsonStr){
-        return "1";
     }
 
 }

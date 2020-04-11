@@ -107,10 +107,26 @@ $(function () {
             data: jsonStr,
             contentType: "application/json;charset=utf-8",
             async: false,
-            dataType: "text",
+            dataType: "json",
             success: function (data) {
-                let checkResult = data.toString();
-                if (checkResult === "1"){
+                if (data === "0"){
+                    //验证失败，加载并显示提示用户验证失败的模态框
+                    let loginErrorModal = $("#loginErrorModal");
+                    if (loginErrorModal.length === 0){
+                        loadModals();
+                        loginErrorModal = $("#loginErrorModal");
+                    }
+                    loginErrorModal.modal();
+                    //更改用户名密码为未验证状态
+                    loginErrorModal.on("hide.bs.modal", function (e) {
+                        bv.updateStatus("userNameInput", "NOT_VALIDATED");
+                        bv.updateStatus("passwordInput", "NOT_VALIDATED");
+                    });
+                    //更改登录按钮的登陆状态
+                    $("#loginButton").button("reset");
+                }else {
+                    //将用户信息保存到sessionStorage中
+                    saveData2Ses(data);
                     //登陆成功
                     if($("input[name='rememberCheckbox']").prop("checked")) {
                         //需要记住密码,判断是否已经设置cookie，有的话不必设置cookie
@@ -130,23 +146,6 @@ $(function () {
                     }
                     //登陆成功，跳转到主页
                     $(window).attr("location", "index");
-                }else if(checkResult === "0"){
-                    //验证失败，加载并显示提示用户验证失败的模态框
-                    let loginErrorModal = $("#loginErrorModal");
-                    if (loginErrorModal.length === 0){
-                        loadModals();
-                        loginErrorModal = $("#loginErrorModal");
-                    }
-                    loginErrorModal.modal();
-                    //更改用户名密码为未验证状态
-                    loginErrorModal.on("hide.bs.modal", function (e) {
-                        bv.updateStatus("userNameInput", "NOT_VALIDATED");
-                        bv.updateStatus("passwordInput", "NOT_VALIDATED");
-                    });
-                    //更改登录按钮的登陆状态
-                    $("#loginButton").button("reset");
-                }else{
-                    alert("登录校验结果出错！");
                 }
             },
             error: function (error) {
@@ -230,4 +229,16 @@ function resize() {
     //获取当前浏览器窗口高度
     let pageHeight = $(window).height();
     $("body").css("height", pageHeight);
+}
+/**
+ * 作者: lwh
+ * 时间: 2020.4.11
+ * 描述: 将信息存入session(所给信息为JSON字符串，存储格式也为键值对模式)
+ */
+function saveData2Ses(jsonStr) {
+    //遍历json数组并进行存储
+    $.each(jsonStr, function (key, value) {
+        //将键值对存入sessionStorage
+        window.sessionStorage.setItem(key, value);
+    });
 }

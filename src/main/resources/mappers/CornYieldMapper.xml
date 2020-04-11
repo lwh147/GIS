@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gis.dao.CornYieldDao">
+    <resultMap id="cornYieldMap" type="com.gis.entity.CornYield">
+        <id property="cornFieldId" column="cornFieldId"/>
+        <result property="moistureYield" column="moistureYield"/>
+        <result property="boxWeight" column="boxWeight"/>
+        <result property="beforeDehydration" column="beforeDehydration"/>
+        <result property="afterDehydration" column="afterDehydration"/>
+        <result property="moistureContent" column="moistureContent"/>
+        <result property="dryYield" column="dryYield"/>
+    </resultMap>
+    <insert id="save" >
+        insert into cornYield (cornFieldId,moistureYield, boxWeight, beforeDehydration, afterDehydration, moistureContent, dryYield)
+        values (#{cornFieldId},#{moistureYield}, #{boxWeight}, #{beforeDehydration}, #{afterDehydration}, #{moistureContent}, #{dryYield});
+    </insert>
+    <select id="getAllYield" resultMap="cornYieldMap">
+        select * from cornYield
+    </select>
+    <select id="getYieldById" resultMap="cornYieldMap">
+        select * from cornYield
+        where cornFieldId = #{cornFieldId}
+    </select>
+    <delete id="delete">
+        delete from cornYield
+        where cornFieldId = #{cornFieldId}
+    </delete>
+</mapper>
