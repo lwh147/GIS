@@ -81,4 +81,16 @@ function getDateWeek(date) {
 	let today = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
 	return today[day.getDay()];
 }
+/**
+ * 作者: lwh
+ * 时间: 2020.4.11
+ * 描述: 将信息存入session(所给信息为JSON字符串，存储格式也为键值对模式)
+ */
+function saveData2Ses(jsonStr) {
+	//遍历json数组并进行存储
+	$.each(jsonStr, function (key, value) {
+		//将键值对存入sessionStorage
+		window.sessionStorage.setItem(key, value);
+	});
+}
 

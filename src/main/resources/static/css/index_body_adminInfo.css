@@ -1,0 +1,59 @@
+/**
+ * 作者: lwh
+ * 时间: 2020.4.12
+ */
+
+/*显示区域高度*/
+#index-body-adminInfo {
+    height: 750px;
+}
+#adminInfo-hello {
+    margin-top: 150px;
+    margin-bottom: 50px;
+}
+#adminInfo-card {
+    margin-top: 50px;
+}
+#adminInfo-split {
+    height: 2px;
+    border-radius: 1px;
+    background-color: #d3d3d3;
+}
+#adminInfo-hello-img {
+    width: 65px;
+    height: 65px;
+}
+#adminInfo-hello-email {
+    color: gray;
+}
+.card {
+    background-color: white;
+    padding-right: 30px;
+    border-radius: 4px;
+}
+.card-left {
+    background-color: #0078d7;
+    width: 140px;
+    height: 140px;
+}
+.card-left-img {
+    width: 60px;
+    height: 60px;
+    margin-top: 40px;
+    margin-left: 40px;
+}
+.card-right {
+    padding-top: 10px;
+    padding-left: 30px;
+}
+.card-right-title {
+    color: #585858;
+}
+.card-right-detail {
+    color: gray;
+}
+#adminInfo-card-vertical-spilit {
+    height: 20px;
+    width: 80px;
+    float: left;
+}

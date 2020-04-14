@@ -1,15 +1,12 @@
 /**
  * 作者: lwh
- * 时间: 2020.4.10
+ * 时间: 2020.4.13
  */
 
-/*导航栏激活状态下的标签颜色设置*/
-#index-head-navbar-container .navbar .nav li.active a{
-    background-color: #4190cc;
-    color: white;
+/*更改页面主体颜色为浅色*/
+#index-body-container {
+    background-color: #f7f7f7;
 }
-/*鼠标悬停在超链接上的颜色设置*/
-#index-head-navbar-container .navbar .nav li a:hover{
-    background-color: #4190cc;
-    color: white;
+#index-foot-container {
+    background-color: #f7f7f7;
 }

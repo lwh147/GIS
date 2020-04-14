@@ -8,19 +8,19 @@ public class PageController {
 
     //访问项目根目录时转到管理员登陆页面
     @RequestMapping("/")
-    public String AdminLogin() {
+    public String adminLogin() {
         return "adminLogin";
     }
 
     //加载主界面
     @RequestMapping("/index")
-    public String AdminIndex() {
+    public String adminIndex() {
         return "index";
     }
 
     //加载管理员登陆页面模态框
     @RequestMapping("/adminLogin_modal")
-    public String AdminLogin_modal() {
+    public String adminLogin_modal() {
         return "adminLogin_modal";
     }
 
@@ -30,4 +30,15 @@ public class PageController {
         return "index_navbar";
     }
 
+    //加载管理员账户信息
+    @RequestMapping("/index_body_adminInfo")
+    public String index_body_adminInfo() {
+        return "index_body_adminInfo";
+    }
+
+    //加载页脚
+    @RequestMapping("/index_foot")
+    public String index_foot() {
+        return "index_foot";
+    }
 }

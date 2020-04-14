@@ -3,7 +3,7 @@
  * 时间: 2020.2.26
  * 描述: 管理员登陆界面的相关初始化js
  */
-$(function () {
+$(document).ready(function () {
     //用来保存账号密码的cookie名称变量
     let cname = "savedAccInfo";
     //用来判断是否已设置cookie
@@ -11,8 +11,8 @@ $(function () {
     let base64_savedUserName = "";
 
     //调整网页大小
-    resize();
-    window.onresize = resize;
+    //resize();
+    //window.onresize = resize;
 
     //查询cookie是否存在记住的账号密码
     let base64_accInfo = getCookie(window.btoa(cname));
@@ -118,10 +118,10 @@ $(function () {
                     }
                     loginErrorModal.modal();
                     //更改用户名密码为未验证状态
-                    loginErrorModal.on("hide.bs.modal", function (e) {
+/*                    loginErrorModal.on("hide.bs.modal", function (e) {
                         bv.updateStatus("userNameInput", "NOT_VALIDATED");
                         bv.updateStatus("passwordInput", "NOT_VALIDATED");
-                    });
+                    });*/
                     //更改登录按钮的登陆状态
                     $("#loginButton").button("reset");
                 }else {
@@ -203,7 +203,7 @@ function getCookie(cname) {
 /**
  * 作者: lwh
  * 时间: 2020.2.27
- * 描述: 加载模态框
+ * 描述: 加载登陆失败的模态框
  */
 function loadModals() {
     //加载模态框
@@ -229,16 +229,4 @@ function resize() {
     //获取当前浏览器窗口高度
     let pageHeight = $(window).height();
     $("body").css("height", pageHeight);
-}
-/**
- * 作者: lwh
- * 时间: 2020.4.11
- * 描述: 将信息存入session(所给信息为JSON字符串，存储格式也为键值对模式)
- */
-function saveData2Ses(jsonStr) {
-    //遍历json数组并进行存储
-    $.each(jsonStr, function (key, value) {
-        //将键值对存入sessionStorage
-        window.sessionStorage.setItem(key, value);
-    });
 }
