@@ -4,21 +4,17 @@
  */
 
 /*导航栏激活状态下的标签颜色设置*/
-#index-head-navbar-container .navbar .nav li.active a{
+#index-navbar .navbar .nav li.active a{
     background-color: #0078d7;
     color: white;
 }
 /*鼠标悬停在超链接上的颜色设置*/
-#index-head-navbar-container .navbar .nav li a:hover{
+#index-navbar .navbar .nav li a:hover{
     background-color: #0078d7;
     color: white;
 }
 /*搜索框输入错误提示文字显示区域*/
-#index-head-navbar-container #errors{
+#index-navbar #index-navbar-searchFrom #errors{
     padding-left: 2px;
-}
-/*分割搜索框与导航标签*/
-#index-head-navbar-container #index-navbar-splitdiv{
-    width: 20%;
-    height: 1px;
+    width: 180px;
 }

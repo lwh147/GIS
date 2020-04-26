@@ -68,7 +68,7 @@ $(document).ready(function () {
                 }
             },
             passwordInput: {
-                message: "密码不合法",
+                message: "*密码不合法",
                 validators: {
                     notEmpty: {
                         message: "*密码不能为空"
@@ -78,6 +78,7 @@ $(document).ready(function () {
                         max: 6,
                         message: "*密码必须为6位"
                     },
+                    //不能和指定输入域值相同
                     different: {
                         field: "userNameInput",
                         message: "*密码不能和用户名相同"
@@ -92,7 +93,7 @@ $(document).ready(function () {
         //更改登录按钮的登陆状态
         $("#loginButton").button("loading");
         //获取bootstrapValidator实例
-        let bv = $(e.target).data("bootstrapValidator");
+        //let bv = $(e.target).data("bootstrapValidator");
         //用base64加密用户名和密码
         let base64_userName = window.btoa($("input[name='userNameInput']").val());
         let base64_password = window.btoa($("input[name='passwordInput']").val());
@@ -117,11 +118,12 @@ $(document).ready(function () {
                         loginErrorModal = $("#loginErrorModal");
                     }
                     loginErrorModal.modal();
-                    //更改用户名密码为未验证状态
-/*                    loginErrorModal.on("hide.bs.modal", function (e) {
+                    /*更改用户名密码为未验证状态，对模态框的生命周期时间进行监听，当模态框消失时触发操作
+                    loginErrorModal.on("hide.bs.modal", function (e) {
                         bv.updateStatus("userNameInput", "NOT_VALIDATED");
                         bv.updateStatus("passwordInput", "NOT_VALIDATED");
-                    });*/
+                    });
+                    */
                     //更改登录按钮的登陆状态
                     $("#loginButton").button("reset");
                 }else {
@@ -213,7 +215,7 @@ function loadModals() {
         async: false,
         dataType: "html",
         success: function (data) {
-            $("#modalContainer").append(data);
+            $("body").append(data);
         },
         error: function (error) {
             alert("----ajax请求加载模态框执行出错！错误信息如下：----\n" + error.responseText);

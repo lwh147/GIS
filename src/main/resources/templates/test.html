@@ -2,7 +2,6 @@
  作者: lwh
  时间: 2020.2.26
 -->
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -25,16 +24,80 @@
     <!-- 引入jquery的md5加密插件 -->
     <script type="test/javascript" src="../static/extlib/jquerymd5/md5.pro.js" th:src="@{/extlib/jquerymd5/md5.pro.js}"></script>
     <!-- 引入自己的css库文件-->
-    <link rel="stylesheet" href="../static/css/index.css" th:src="@{/css/index.css}">
-    <link rel="stylesheet" href="../static/css/index_navbar.css" th:href="@{/css/index_navbar.css}">
-    <link rel="stylesheet" href="../static/css/index_foot.css" th:href="@{/css/index_foot.css}">
-    <link rel="stylesheet" href="../static/css/index_body_adminInfo.css" th:href="@{/css/index_body_adminInfo.css}">
+<!--    <link rel="stylesheet" href="../static/css/index.css" th:src="@{/css/index.css}">-->
+<!--    <link rel="stylesheet" href="../static/css/index_navbar.css" th:href="@{/css/index_navbar.css}">-->
+<!--    <link rel="stylesheet" href="../static/css/index_foot.css" th:href="@{/css/index_foot.css}">-->
+<!--    <link rel="stylesheet" href="../static/css/index_body_adminInfo.css" th:href="@{/css/index_body_adminInfo.css}">-->
     <!-- 引入自己的js库文件 -->
-    <script type="text/javascript" src="../static/js/myLib.js" th:src="@{/js/myLib.js}"></script>
-    <script type="text/javascript" src="../static/js/index_navbar.js" th:src="@{/js/index_navbar.js}"></script>
-    <script type="text/javascript" src="../static/js/index_body_adminInfo.js" th:src="@{/js/index_body_adminInfo.js}"></script>
+<!--    <script type="text/javascript" src="../static/js/myLib.js" th:src="@{/js/myLib.js}"></script>-->
+<!--    <script type="text/javascript" src="../static/js/index_navbar.js" th:src="@{/js/index_navbar.js}"></script>-->
+<!--    <script type="text/javascript" src="../static/js/index_body_adminInfo.js" th:src="@{/js/index_body_adminInfo.js}"></script>-->
 </head>
 <body>
-
+<!--
+ 作者: lwh
+ 时间: 2020.4.25
+ 描述: 修改密码的模态框
+-->
+<div class="modal fade" id="adminInfo-password-editModal" tabindex="-1" role="dialog" aria-labelledby="adminInfo-password-editModal"
+    aria-describedby="管理员密码修改">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">修改密码</h4>
+            </div>
+            <div class="modal-body">
+                <form id="adminInfo-password-editModal-form">
+                    <div class="form-group">
+                        <label for="adminInfo-passwordInput">新密码</label>
+                        <input type="text" class="form-control" id="adminInfo-passwordInput" name="adminInfo-passwordInput">
+                    </div>
+                    <div class="form-group">
+                        <label for="adminInfo-passwordConfirm">请再次输入新密码</label>
+                        <input type="password" class="form-control" id="adminInfo-passwordConfirm" name="adminInfo-passwordConfirm">
+                    </div>
+                    <div style="margin-left: -15px; margin-right: -15px; padding-top: 15px; padding-right: 15px; text-align: right; border-top: 1px solid #e5e5e5;">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary" data-loading-text="正在修改...">保存修改</button>
+                    </div>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--
+ 作者: lwh
+ 时间: 2020.4.26
+ 描述: 修改邮箱的模态框
+-->
+<div class="modal fade" id="adminInfo-email-editModal" tabindex="-1" role="dialog" aria-labelledby="adminInfo-email-editModal"
+     aria-describedby="管理员邮箱修改">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">修改邮箱</h4>
+            </div>
+            <div class="modal-body">
+                <form id="adminInfo-email-editModal-form">
+                    <div class="form-group">
+                        <label for="adminInfo-newEmailInput">请输入新邮箱地址</label>
+                        <input type="email" class="form-control" id="adminInfo-newEmailInput" name="adminInfo-newEmailInput"
+                        placeholder="address@example.com">
+                    </div>
+                    <div style="margin-left: -15px; margin-right: -15px; padding-top: 15px; padding-right: 15px; text-align: right; border-top: 1px solid #e5e5e5;">
+                        <button type="button" class="btn btn-default right" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary right" data-loading-text="正在修改...">保存修改</button>
+                    </div>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script type="text/javascript">
+    $("#adminInfo-password-editModal").modal();
+    //$("#adminInfo-email-editModal").modal();
+</script>
 </body>
 </html>

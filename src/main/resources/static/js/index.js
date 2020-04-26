@@ -1,11 +1,59 @@
 //全局变量
-
 //存储当前已登录的用户信息，方便函数调用
-let index_loggedAdminInfo;
-//记录当前用户的操作以便于刷新页面后重新加载
-let index_currentOperation = {
-    funName: "showAdminInfo()"
+let loggedAdminInfo;
+//存储系统各组件的加载函数和组件名称、组件id和组件请求url
+let systemComponents = {
+    "c0": {
+        "clfn": "loadNavbar()",      //加载组件函数名
+        "cn": "导航栏",              //组件名称
+        "cid": "index-navbar",       //组件id
+        "curl": "index_navbar"       //组件请求url
+    },
+    "c1": {
+        "clfn": "loadFoot()",
+        "cn": "页脚",
+        "cid": "index-foot",
+        "curl": "index_foot"
+    },
+    "c2": {
+        "clfn": "showBodyIndex()",
+        "cn": "首页",
+        "cid": "index-body-index",
+        "curl": "index_body_index"
+    },
+    "c3": {
+        "clfn": "showMap()",
+        "cn": "地图",
+        "cid": "index-body-map",
+        "curl": "index_body_map"
+    },
+    "c4": {
+        "clfn": "showChart()",
+        "cn": "图表",
+        "cid": "index-body-chart",
+        "curl": "index_body_chart"
+    },
+    "c5": {
+        "clfn": "showAdminInfo()",
+        "cn": "我的账号",
+        "cid": "index-body-adminInfo",
+        "curl": "index_body_adminInfo"
+    },
+    "c6": {
+        "clfn": "showAddAdmin()",
+        "cn": "添加管理员",
+        "cid": "index-body-addAdmin",
+        "curl": "index_body_addAdmin"
+    },
+    "c7": {
+        "clfn": "showSearchResult()",
+        "cn": "搜索结果",
+        "cid": "index-body-searchResult",
+        "curl": "index_body_searchResult"
+    }
 };
+//记录当前用户处于的界面便于刷新
+let currentComponent = systemComponents.c2;
 
 /**
  * 作者: lwh
@@ -13,25 +61,26 @@ let index_currentOperation = {
  * 描述: 管理系统主页初始化js
  */
 $(document).ready(function () {
-    //判断是否存在登录用户
+    //判断是否存在登录用户-------------------
     //isLogged();
 
     //初始化全局变量
     getGlobalVars();
 
     //加载并初始化导航栏
-    loadNavbar();
+    eval(systemComponents.c0.clfn);
 
     //根据保存的当前操作加载对应内容
-    eval(index_currentOperation.funName);
+    eval(currentComponent.clfn);
 
     //加载并初始化页脚
-    loadFoot();
+    eval(systemComponents.c1.clfn);
 });
+
 /**
  * 作者: lwh
  * 时间: 2020.4.14
- * 描述: 判断是否存在登录用户
+ * 描述: 判断是否存在登录用户---------
  */
 function isLogged() {
     $.ajax({
@@ -48,25 +97,33 @@ function isLogged() {
         }
     });
 }
+
 /**
  * 作者: lwh
  * 时间: 2020.4.13
- * 描述: 获取管理员信息
+ * 描述: 获取管理员信息和刷新网页前的操作信息
  */
 function getGlobalVars() {
-    index_loggedAdminInfo = {
+    //获取管理员信息
+    loggedAdminInfo = {
         adminId: window.sessionStorage.getItem("adminId"),
         adminName: window.atob(window.sessionStorage.getItem("adminName")),
         password: window.atob(window.sessionStorage.getItem("password")),
         email: window.atob(window.sessionStorage.getItem("email"))
     };
-    let funName = window.sessionStorage.getItem("funName");
-    if (funName !== null){
-        index_currentOperation = {
-            funName: window.atob(funName)
+    //获取网页加载前进行的操作
+    let cclfn = window.sessionStorage.getItem("clfn");
+    //如果为空加载首页，如果不为空说明刷新网页前处于非首页状态
+    if (cclfn !== null){
+        currentComponent = {
+            "clfn": cclfn,
+            "cn": window.sessionStorage.getItem("cn"),
+            "cid": window.sessionStorage.getItem("cid"),
+            "curl": window.sessionStorage.getItem("curl")
         }
     }
 }
+
 /**
  * 作者: lwh
  * 时间: 2020.4.10
@@ -75,13 +132,13 @@ function getGlobalVars() {
 function loadNavbar() {
     //获取
     $.ajax({
-        url: "index_navbar",
+        url: systemComponents.c0.curl,
         type: "get",
         async: false,
         dataType: "html",
         success: function (data) {
             //加载
-            $("#index-head-navbar-container").append(data);
+            $("#index-navbar-container").append(data);
             //初始化导航栏
             initIndexNavbar();
         },
@@ -90,78 +147,7 @@ function loadNavbar() {
         }
     });
 }
-/**
- * 作者: lwh
- * 时间: 2020.4.13
- * 描述: 加载网页主体首页
- */
-function loadIndexBodyIndex() {
-    //获取
-    $.ajax({
-        url: "index_body_index",
-        type: "get",
-        async: false,
-        dataType: "html",
-        success: function (data) {
-            //加载
-            $("#index-body-container").append(data);
-            //更新当前操作
-            index_currentOperation = {
-                funName: "loadIndexBodyIndex()"
-            };
-            saveData2Ses(index_currentOperation);
-        },
-        error: function (error) {
-            alert("----ajax请求加载index_body_index执行出错！错误信息如下：----\n" + error.responseText);
-        }
-    });
-}
-/**
- * 作者: lwh
- * 时间: 2020.4.12
- * 描述：显示登录管理员的信息
- */
-function showAdminInfo() {
-    if (!isLoaded("index-body-adminInfo")){
-        //获取
-        $.ajax({
-            url: "index_body_adminInfo",
-            type: "get",
-            async: false,
-            dataType: "html",
-            success: function (data) {
-                //加载
-                $("#index-body-container").append(data);
-                //初始化管理员信息页面
-                initAdminInfo();
-                //更新当前操作
-                index_currentOperation = {
-                    funName: window.btoa("showAdminInfo()")
-                };
-                saveData2Ses(index_currentOperation);
-            },
-            error: function (error) {
-                alert("----ajax请求加载adminInfo执行出错！错误信息如下：----\n" + error.responseText);
-            }
-        });
-    }
-}
-/**
- * 作者: lwh
- * 时间: 2020.4.12
- * 描述: 添加管理员
- */
-function addAdmin() {
 
-}
-/**
- * 作者: lwh
- * 时间: 2020.4.12
- * 描述: 退出登录
- */
-function logout() {
-    $(window).attr("location", "/gis");
-}
 /**
  * 作者: lwh
  * 时间: 2020.4.13
@@ -170,7 +156,7 @@ function logout() {
 function loadFoot() {
     //获取
     $.ajax({
-        url: "index_foot",
+        url: systemComponents.c1.curl,
         type: "get",
         async: false,
         dataType: "html",
@@ -182,12 +168,4 @@ function loadFoot() {
             alert("----ajax请求加载页脚执行出错！错误信息如下：----\n" + error.responseText);
         }
     });
-}
-/**
- * 作者: lwh
- * 时间: 2020.4.14
- * 描述: 判断一个组件是否存在
- */
-function isLoaded(id) {
-    return $("#" + id).length !== 0;
 }

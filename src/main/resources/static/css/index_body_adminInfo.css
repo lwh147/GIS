@@ -7,52 +7,52 @@
 #index-body-adminInfo {
     height: 750px;
 }
-#adminInfo-hello {
+#index-body-adminInfo #adminInfo-hello {
     margin-top: 150px;
     margin-bottom: 50px;
 }
-#adminInfo-card {
+#index-body-adminInfo #adminInfo-card {
     margin-top: 50px;
 }
-#adminInfo-split {
+#index-body-adminInfo #adminInfo-split {
     height: 2px;
     border-radius: 1px;
     background-color: #d3d3d3;
 }
-#adminInfo-hello-img {
+#index-body-adminInfo #adminInfo-hello-img {
     width: 65px;
     height: 65px;
 }
-#adminInfo-hello-email {
+#index-body-adminInfo #adminInfo-hello-email {
     color: gray;
 }
-.card {
+#index-body-adminInfo .card {
     background-color: white;
     padding-right: 30px;
     border-radius: 4px;
 }
-.card-left {
+#index-body-adminInfo .card-left {
     background-color: #0078d7;
     width: 140px;
     height: 140px;
 }
-.card-left-img {
+#index-body-adminInfo .card-left-img {
     width: 60px;
     height: 60px;
     margin-top: 40px;
     margin-left: 40px;
 }
-.card-right {
+#index-body-adminInfo .card-right {
     padding-top: 10px;
     padding-left: 30px;
 }
-.card-right-title {
+#index-body-adminInfo .card-right-title {
     color: #585858;
 }
-.card-right-detail {
+#index-body-adminInfo .card-right-detail {
     color: gray;
 }
-#adminInfo-card-vertical-spilit {
+#index-body-adminInfo #adminInfo-card-vertical-spilit {
     height: 20px;
     width: 80px;
     float: left;

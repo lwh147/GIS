@@ -30,10 +30,22 @@ public class PageController {
         return "index_navbar";
     }
 
+    //加载系统主页导航栏
+    @RequestMapping("/index_body_index")
+    public String index_body_index() {
+        return "index_body_index";
+    }
+
     //加载管理员账户信息
     @RequestMapping("/index_body_adminInfo")
     public String index_body_adminInfo() {
         return "index_body_adminInfo";
+    }
+
+    //加载管理员账户信息
+    @RequestMapping("/index_body_adminInfo_modal")
+    public String index_body_adminInfo_modal() {
+        return "index_body_adminInfo_modal";
     }
 
     //加载页脚
