@@ -19,9 +19,9 @@ public class PageController {
     }
 
     //加载管理员登陆页面模态框
-    @RequestMapping("/adminLogin_modal")
-    public String adminLogin_modal() {
-        return "adminLogin_modal";
+    @RequestMapping("/alert")
+    public String alert() {
+        return "alert";
     }
 
     //加载系统主页导航栏

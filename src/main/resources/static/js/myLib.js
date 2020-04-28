@@ -1,6 +1,13 @@
 /**
  * 作者: lwh
  * 时间: 2019.12.10
+ * 描述: 一些比较常用的函数，需要引入jquery
+ */
+
+
+/**
+ * 作者: lwh
+ * 时间: 2019.12.10
  * 描述: 根据参数名paramName获取浏览器地址的参数值，失败返回null
  */
 function getUrlParam(paramName) {
@@ -12,6 +19,7 @@ function getUrlParam(paramName) {
 		return decodeURIComponent(r[2]); //对参数进行解码并返回
 	return null;
 }
+
 /**
  * 作者: lwh
  * 时间: 2019.12.10
@@ -29,6 +37,7 @@ function timestampToTime(timestamp) {
 	let s = (date.getSeconds() < 10 ? '0' + (date.getSeconds()) : date.getSeconds());
 	return Y + M + D + h + m + s;
 }
+
 /**
  * 作者: lwh
  * 时间: 2019.12.10
@@ -46,6 +55,7 @@ function toRelativeDate(data) {
 	} else
 		return -1;
 }
+
 /**
  * 作者: lwh
  * 时间: 2019.12.10
@@ -62,6 +72,7 @@ function toRelativeDateString(data) {
 	} else
 		return "其他";
 }
+
 /**
  * 作者: lwh
  * 时间: 2019.12.10
@@ -71,6 +82,7 @@ function timestampToTimeOfTheDay(timestamp) {
 	let date = new Date(timestamp);
 	return date.getHours() + ":" + date.getMinutes();
 }
+
 /**
  * 作者: lwh
  * 时间: 2019.12.10
@@ -81,6 +93,7 @@ function getDateWeek(date) {
 	let today = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
 	return today[day.getDay()];
 }
+
 /**
  * 作者: lwh
  * 时间: 2020.4.11
@@ -94,3 +107,39 @@ function saveData2Ses(jsonStr) {
 	});
 }
 
+/**
+ * 作者: lwh
+ * 时间: 2020.4.14
+ * 描述: 判断一个指定id的组件是否存在
+ */
+function isLoaded(cid) {
+	return $("#" + cid).length !== 0;
+}
+
+
+/**
+ * 作者: lwh
+ * 时间: 2020.4.28
+ * 描述: 自定义提示框
+ */
+function myAlert(url, cid, message) {
+	//判断是否已经加载提示框modal
+	if (!isLoaded(cid)){
+		$.ajax({
+			url: url,
+			type: "get",
+			async: false,
+			dataType: "html",
+			success: function (data) {
+				$("body").append(data);
+			},
+			error: function (error) {
+				alert("----ajax请求加载自定义提示框执行出错！错误信息如下：----\n" + error.responseText);
+			}
+		});
+	}
+	//显示模态框
+	$("#alert").modal();
+	//更改提示信息
+	$("#alert-message").text(message);
+}

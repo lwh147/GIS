@@ -10,10 +10,6 @@ $(document).ready(function () {
     let isSaved = false;
     let base64_savedUserName = "";
 
-    //调整网页大小
-    //resize();
-    //window.onresize = resize;
-
     //查询cookie是否存在记住的账号密码
     let base64_accInfo = getCookie(window.btoa(cname));
     if (base64_accInfo !== null) {
@@ -111,13 +107,8 @@ $(document).ready(function () {
             dataType: "json",
             success: function (data) {
                 if (data === "0"){
-                    //验证失败，加载并显示提示用户验证失败的模态框
-                    let loginErrorModal = $("#loginErrorModal");
-                    if (loginErrorModal.length === 0){
-                        loadModals();
-                        loginErrorModal = $("#loginErrorModal");
-                    }
-                    loginErrorModal.modal();
+                    //验证失败，提示用户验证失败
+                    myAlert("alert", "alert", "用户名或密码错误(x_x)！");
                     /*更改用户名密码为未验证状态，对模态框的生命周期时间进行监听，当模态框消失时触发操作
                     loginErrorModal.on("hide.bs.modal", function (e) {
                         bv.updateStatus("userNameInput", "NOT_VALIDATED");
@@ -201,34 +192,4 @@ function getCookie(cname) {
         }
     }
     return null;
-}
-/**
- * 作者: lwh
- * 时间: 2020.2.27
- * 描述: 加载登陆失败的模态框
- */
-function loadModals() {
-    //加载模态框
-    $.ajax({
-        url: "adminLogin_modal",
-        type: "get",
-        async: false,
-        dataType: "html",
-        success: function (data) {
-            $("body").append(data);
-        },
-        error: function (error) {
-            alert("----ajax请求加载模态框执行出错！错误信息如下：----\n" + error.responseText);
-        }
-    });
-}
-/**
- * 作者: lwh
- * 时间: 2020.3.6
- * 描述: 动态调整网页大小
- */
-function resize() {
-    //获取当前浏览器窗口高度
-    let pageHeight = $(window).height();
-    $("body").css("height", pageHeight);
 }

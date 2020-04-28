@@ -131,15 +131,6 @@ function logout() {
 
 /**
  * 作者: lwh
- * 时间: 2020.4.14
- * 描述: 判断一个组件是否存在
- */
-function isLoaded(cid) {
-    return $("#" + cid).length !== 0;
-}
-
-/**
- * 作者: lwh
  * 时间: 2020.4.24
  * 描述: 更新sessionstorage中存储的当前操作并更新导航栏
  */
@@ -159,7 +150,7 @@ function saveCurrentOpt2SesAndUpdateNavbar(cid) {
  */
 function updateCurrentNavMenu(cid){
     //更改网页标题
-    $("title").text(cid.cn + " — 玉米的生长及环境数据管理系统");
+    $("title").text(cid.cn + "—玉米的生长及环境数据管理系统");
     //获取导航栏菜单ul
     //注意eq选择器的使用
     let navMenu = $("#index-navbar #navbar-collapse-1 ul:eq(0)");

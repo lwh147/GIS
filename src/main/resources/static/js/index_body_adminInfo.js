@@ -153,10 +153,10 @@ function adminInfoModal0init(){
             dataType: "json",
             success: function (data) {
                 if (data === "1"){
-                    alert("密码修改成功，请重新登陆(∩_∩)!");
+                    myAlert("alert", "alert", "密码修改成功，请重新登陆(∩_∩)!");
                     logout();
                 }else{
-                    alert("啊欧，密码修改失败(x_x)！");
+                    myAlert("alert", "alert", "啊欧，密码修改失败(x_x)！");
                     //更改修改按钮的修改状态
                     $("#" + adminInfoModals.m0.mid + " :submit").button("reset");
                 }
@@ -216,11 +216,11 @@ function adminInfoModal1init(){
             dataType: "json",
             success: function (data) {
                 if (data === "1"){
-                    alert("邮箱修改成功(∩_∩)");
+                    myAlert("alert", "alert", "邮箱修改成功(∩_∩)!");
                     //重新加载管理员信息
                     eval(systemComponents.c5.clfn);
                 }else{
-                    alert("啊欧，邮箱修改失败(x_x)！");
+                    myAlert("alert", "alert", "啊欧，邮箱修改失败(x_x)！");
                     //更改修改按钮的修改状态
                     $("#" + adminInfoModals.m0.mid + " :submit").button("reset");
                 }
