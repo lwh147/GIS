@@ -6,6 +6,7 @@
 /*更改页面主体颜色为浅色*/
 #index-body-container {
     background-color: #f7f7f7;
+    padding-top: 51px;
 }
 #index-foot-container {
     background-color: #f7f7f7;

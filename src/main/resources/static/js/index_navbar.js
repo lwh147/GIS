@@ -5,9 +5,9 @@
  */
 function initIndexNavbar(){
     //更新导航栏已登录管理员信息
-    $("#index-navbar #index-navbar-adminName").text("您好，" + loggedAdminInfo.adminName);
+    $("#index-navbar-adminName").text("您好，" + loggedAdminInfo.adminName);
     //搜索框输入验证
-    $("#index-navbar #index-navbar-searchFrom").bootstrapValidator({
+    $("#index-navbar-searchFrom").bootstrapValidator({
         //提示信息放到指定区域
         container: "#errors",
         feedbackIcons: {
@@ -29,7 +29,7 @@ function initIndexNavbar(){
         //阻止正常提交表单
         e.preventDefault();
         //更改搜索按钮的状态
-        $("#index-navbar #index-navbar-searchFrom :submit").button("loading");
+        $("#index-navbar-searchFrom :submit").button("loading");
         //--------------------------------------
         console.log("搜索处理");
     });
@@ -117,7 +117,28 @@ function showAdminInfo() {
  * 描述: 添加管理员---------
  */
 function showAddAdmin() {
-    console.log("showAddAdmin");
+    if (!isLoaded(systemComponents.c6.cid)){
+        //获取
+        $.ajax({
+            url: systemComponents.c6.curl,
+            type: "get",
+            async: true,
+            dataType: "html",
+            success: function (data) {
+                //移除之前的组件
+                $("#" + currentComponent.cid).remove();
+                //加载
+                $("#index-body-container").append(data);
+                //更新当前操作并激活对应导航栏菜单项
+                saveCurrentOpt2SesAndUpdateNavbar(systemComponents.c6);
+                //初始化管理员信息页面
+                initAddAdmin();
+            },
+            error: function (error) {
+                alert("----ajax请求加载显示管理员信息执行出错！错误信息如下：----\n" + error.responseText);
+            }
+        });
+    }
 }
 
 /**
@@ -153,7 +174,7 @@ function updateCurrentNavMenu(cid){
     $("title").text(cid.cn + "—玉米的生长及环境数据管理系统");
     //获取导航栏菜单ul
     //注意eq选择器的使用
-    let navMenu = $("#index-navbar #navbar-collapse-1 ul:eq(0)");
+    let navMenu = $("#navbar-collapse-1 ul:eq(0)");
     //取消当前激活菜单项
     navMenu.children(".active").removeAttr("class");
     //如果菜单项数等于4说明进入了非主要的3个菜单项之外的其他菜单项

@@ -21,46 +21,104 @@
     <script type="text/javascript" src="../static/extlib/jquery-3.4.1/jquery-3.4.1.min.js" th:src="@{/extlib/jquery-3.4.1/jquery-3.4.1.min.js}"></script>
     <script type="text/javascript" src="../static/extlib/bootstrap-3.3.7/js/bootstrap.min.js" th:src="@{/extlib/bootstrap-3.3.7/js/bootstrap.min.js}"></script>
     <script type="text/javascript" src="../static/extlib/bootstrapvalidator-0.5.3/js/bootstrapValidator.min.js" th:src="@{/extlib/bootstrapvalidator-0.5.3/js/bootstrapValidator.min.js}"></script>
-    <!-- 引入jquery的md5加密插件 -->
-    <script type="test/javascript" src="../static/extlib/jquerymd5/md5.pro.js" th:src="@{/extlib/jquerymd5/md5.pro.js}"></script>
-    <!-- 引入自己的css库文件-->
-<!--    <link rel="stylesheet" href="../static/css/index.css" th:src="@{/css/index.css}">-->
-<!--    <link rel="stylesheet" href="../static/css/index_navbar.css" th:href="@{/css/index_navbar.css}">-->
-<!--    <link rel="stylesheet" href="../static/css/index_foot.css" th:href="@{/css/index_foot.css}">-->
-<!--    <link rel="stylesheet" href="../static/css/index_body_adminInfo.css" th:href="@{/css/index_body_adminInfo.css}">-->
-    <!-- 引入自己的js库文件 -->
-<!--    <script type="text/javascript" src="../static/js/myLib.js" th:src="@{/js/myLib.js}"></script>-->
-<!--    <script type="text/javascript" src="../static/js/index_navbar.js" th:src="@{/js/index_navbar.js}"></script>-->
-<!--    <script type="text/javascript" src="../static/js/index_body_adminInfo.js" th:src="@{/js/index_body_adminInfo.js}"></script>-->
+    <style type="text/css">
+        #index-body-addAdmin {
+            height: 750px;
+            margin-top: 50px;
+        }
+        #addAdmin-split {
+            margin-top: 10px;
+            height: 2px;
+            border-radius: 1px;
+            background-color: #d3d3d3;
+            margin-bottom: 75px;
+        }
+        #addAdmin-icon {
+            width: 65px;
+            height: 65px;
+        }
+        #addAdmin-title-text {
+            height: 64px;
+            line-height: 64px;
+        }
+        #addAdmin-buttons {
+            margin-top: 50px;
+        }
+    </style>
+    <script type="text/javascript">
+
+    </script>
 </head>
 <body>
 <!--
  作者: lwh
- 时间: 2020.4.28
- 描述: 自定义样式的alert的模态框
+ 时间: 2020.4.12
 -->
-<div class="modal fade" id="myAlert" tabindex="-1" role="dialog" aria-labelledby="myAlert"
-     aria-describedby="自定义样式的alert框">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-header" style="background-color: #0078d7; color: white;">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">系统提示</h4>
-            </div>
-            <div class="modal-body" style="padding: 10px;">
-                <div>
-                    <h4>用户名或密码错误！</h4>
+
+<!-- 我的账号信息 -->
+<div class="container" id="index-body-addAdmin">
+    <div class="row" id="addAdmin-title">
+        <div class="col-lg-10
+                    col-md-10">
+            <div class="media">
+                <div class="media-left">
+                    <img id="addAdmin-icon" src="../static/src/addAdmin.png" th:src="@{/src/addAdmin.png}"
+                         alt="添加">
                 </div>
-                <div style="text-align: right; margin-top: 20px;">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+                <div class="media-right">
+                    <h2 class="media-body" id="addAdmin-title-text">请输入新添加管理员信息</h2>
                 </div>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<script type="text/javascript">
-    $("#myAlert").modal();
-    //alert("“");
-</script>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-11 col-md-11">
+            <div id="addAdmin-split"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-offset-2 col-lg-6
+                    col-md-offset-2 col-md-8">
+            <form class="form-horizontal" id="addAdmin-form">
+                <div class="form-group">
+                    <label for="newUserName" class="col-sm-2 control-label">用户名</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="newUserName" name="newUserName">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="newUserPassword" class="col-sm-2 control-label">密码</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="newUserPassword" name="newUserPassword">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="newUserPasswordConfirm" class="col-sm-2 control-label">确认密码</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="newUserPasswordConfirm" name="newUserPasswordConfirm">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="newUserEmail" class="col-sm-2 control-label">邮箱</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="newUserEmail" name="newUserEmail">
+                    </div>
+                </div>
+                <div class="form-group" id="addAdmin-buttons">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div class="col-sm-5">
+                            <button type="submit" class="btn btn-primary col-sm-12" id="addAdminButton" data-loading-text="正在添加...">
+                                添加
+                            </button>
+                        </div>
+                        <div class="col-sm-5">
+                            <button type="button" class="btn btn-default col-sm-12" id="addAdminResetButton">重置</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>

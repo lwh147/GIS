@@ -22,8 +22,8 @@ let adminInfoModals = {
  */
 function initAdminInfo() {
     //管理员信息显示页面的初始化相关工作
-    $("#index-body-adminInfo #adminInfo-hello-adminName").text("您好，" + loggedAdminInfo.adminName + "!");
-    $("#index-body-adminInfo #adminInfo-hello-email").text(loggedAdminInfo.email);
+    $("#adminInfo-hello-adminName").text("您好，" + loggedAdminInfo.adminName + "!");
+    $("#adminInfo-hello-email").text(loggedAdminInfo.email);
 }
 
 /**
@@ -34,18 +34,14 @@ function initAdminInfo() {
 function resetAdminInfo(type) {
     //加载该组件用到的所有模态框
     loadAdminInfoModals();
-    //初始化各个模态框
-    $.each(adminInfoModals, function (key, value) {
-        eval(value.minit);
-    });
     //根据要更改的信息类别调用对应的模态框
-    if (type === 0){
+    if (type === 0)
+        //激活模态框
         $("#" + adminInfoModals.m0.mid).modal();
-    }else if(type === 1){
+    else if(type === 1)
         $("#" + adminInfoModals.m1.mid).modal();
-    }else{
+    else
         alert("更改的用户信息类别出错!");
-    }
 }
 
 /**
@@ -65,6 +61,14 @@ function loadAdminInfoModals(){
             success: function (data) {
                 //加载
                 $("body").append(data);
+                //初始化各个模态框
+                $.each(adminInfoModals, function (key, value) {
+                    eval(value.minit);
+                    //更改验证状态，对模态框的生命周期时间进行监听，当模态框消失时触发操作
+                    $("#" + value.mid).on("hide.bs.modal", function (e) {
+                        $("#" + value.mid + "-form").data("bootstrapValidator").resetForm(true);
+                    });
+                });
             },
             error: function (error) {
                 alert("----ajax请求管理员信息组件下的模态框执行出错！错误信息如下：----\n" + error.responseText);
@@ -80,7 +84,7 @@ function loadAdminInfoModals(){
  */
 function adminInfoModal0init(){
     //位更改新密码的表单添加验证条件
-    $("#" + adminInfoModals.m0.mid).bootstrapValidator({
+    $("#adminInfo-resetPassword-modal-form").bootstrapValidator({
         message: "*输入不合法",
         feedbackIcons: {
             valid: "glyphicon glyphicon-ok",
@@ -99,12 +103,13 @@ function adminInfoModal0init(){
                         max: 6,
                         message: "*密码必须为6位"
                     },
-                    //自定义校验器
+                    //自定义校验器(新密码不能和旧密码相同且不能和用户名相同)
                     callback: {
                         callback: function (value, validator, $field) {
+                            //保存验证结果的json字符串
                             let checkResult = {
                                 valid: true,
-                                message: "*验证成功"
+                                message: "*校验成功"
                             };
                             if (value === loggedAdminInfo.password){
                                 checkResult.valid = false;
@@ -120,7 +125,7 @@ function adminInfoModal0init(){
                 }
             },
             "adminInfo-newPasswordConfirm": {
-                message: "*密码不合法",
+                message: "*密码确认失败",
                 validators: {
                     notEmpty: {
                         message: "*请再次输入新密码"
@@ -138,10 +143,10 @@ function adminInfoModal0init(){
         //阻止正常提交表单
         e.preventDefault();
         //获取新密码
-        let newPassword = $("#" + adminInfoModals.m0.mid + "#adminInfo-newPasswordInput").val();
+        let newPassword = $("#adminInfo-newPasswordInput").val();
         //更改修改按钮的修改状态
-        $("#" + adminInfoModals.m0.mid + " :submit").button("loading");
-        //发送请求更改新密码
+        $("#adminInfo-resetPassword-modal-form :submit").button("loading");
+        //发送请求更改新密码---------------------
         $.ajax({
             url: "",
             type: "post",
@@ -158,7 +163,7 @@ function adminInfoModal0init(){
                 }else{
                     myAlert("alert", "alert", "啊欧，密码修改失败(x_x)！");
                     //更改修改按钮的修改状态
-                    $("#" + adminInfoModals.m0.mid + " :submit").button("reset");
+                    $("#adminInfo-resetPassword-modal-form :submit").button("reset");
                 }
             },
             error: function (error) {
@@ -169,13 +174,13 @@ function adminInfoModal0init(){
 }
 
 /**
- * 作者: lwh
- * 时间: 2020.4.26
- * 描述：初始化修改邮箱的模态框--------------
- */
+* 作者: lwh
+* 时间: 2020.4.26
+* 描述：初始化修改邮箱的模态框--------------
+*/
 function adminInfoModal1init(){
     //位更改新密码的表单添加验证条件
-    $("#" + adminInfoModals.m1.mid).bootstrapValidator({
+    $("#adminInfo-resetEmail-modal-form").bootstrapValidator({
         message: "*输入不合法",
         feedbackIcons: {
             valid: "glyphicon glyphicon-ok",
@@ -200,11 +205,11 @@ function adminInfoModal1init(){
         //注册表单被提交后且验证成功的事件的监听函数以使用ajax提交表单数据
         //阻止正常提交表单
         e.preventDefault();
-        //获取新密码
-        let newEmail = $("#" + adminInfoModals.m0.mid + "#adminInfo-newPasswordInput").val();
+        //获取新邮箱
+        let newEmail = $("#adminInfo-newEmailInput").val();
         //更改修改按钮的修改状态
-        $("#" + adminInfoModals.m1.mid + " :submit").button("loading");
-        //发送请求更改新密码
+        $("#adminInfo-resetEmail-modal-form :submit").button("loading");
+        //发送请求更改新邮箱--------------------
         $.ajax({
             url: "",
             type: "post",
@@ -222,7 +227,7 @@ function adminInfoModal1init(){
                 }else{
                     myAlert("alert", "alert", "啊欧，邮箱修改失败(x_x)！");
                     //更改修改按钮的修改状态
-                    $("#" + adminInfoModals.m0.mid + " :submit").button("reset");
+                    $("#adminInfo-resetEmail-modal-form :submit").button("reset");
                 }
             },
             error: function (error) {

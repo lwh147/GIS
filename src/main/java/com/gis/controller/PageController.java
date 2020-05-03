@@ -53,4 +53,10 @@ public class PageController {
     public String index_foot() {
         return "index_foot";
     }
+
+    //加载添加管理员页面
+    @RequestMapping("/index_body_addAdmin")
+    public String index_body_addAdmin() {
+        return "index_body_addAdmin";
+    }
 }

@@ -6,13 +6,13 @@
 /*显示区域高度*/
 #index-body-adminInfo {
     height: 750px;
+    margin-top: 50px;
 }
 #index-body-adminInfo #adminInfo-hello {
-    margin-top: 150px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 #index-body-adminInfo #adminInfo-card {
-    margin-top: 50px;
+    margin-top: 75px;
 }
 #index-body-adminInfo #adminInfo-split {
     height: 2px;
@@ -20,8 +20,8 @@
     background-color: #d3d3d3;
 }
 #index-body-adminInfo #adminInfo-hello-img {
-    width: 65px;
-    height: 65px;
+    width: 72px;
+    height: 72px;
 }
 #index-body-adminInfo #adminInfo-hello-email {
     color: gray;

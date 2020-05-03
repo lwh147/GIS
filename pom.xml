@@ -11,9 +11,7 @@
     <groupId>com.project</groupId>
     <artifactId>gis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <!-- 默认为jar方式 -->
-    <!-- <packaging>jar</packaging> -->
-    <!-- 改为war方式 -->
+    <!-- war方式 -->
 <!--    <packaging>war</packaging>-->
     <name>gis</name>
     <description>Project for GIS</description>
@@ -52,7 +50,7 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
-        <!-- 添加servlet api-->
+        <!-- 打war包时添加servlet api-->
 <!--        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -78,17 +76,6 @@
             <version>3.9</version>
         </dependency>
 
-        <!-- 添加SpringBoot Dev Tools支持：热加载静态资源-->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>springloaded</artifactId>
-            <version>1.2.6.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <version>2.0.4.RELEASE</version>
-        </dependency>
     </dependencies>
 
     <build>

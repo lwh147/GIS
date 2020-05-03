@@ -1,0 +1,28 @@
+/**
+ * 作者: lwh
+ * 时间: 2020.5.2
+ */
+
+/*显示区域高度*/
+#index-body-addAdmin {
+    height: 750px;
+    margin-top: 50px;
+}
+#index-body-addAdmin #addAdmin-split {
+    margin-top: 10px;
+    height: 2px;
+    border-radius: 1px;
+    background-color: #d3d3d3;
+    margin-bottom: 75px;
+}
+#index-body-addAdmin #addAdmin-icon {
+    width: 72px;
+    height: 72px;
+}
+#index-body-addAdmin #addAdmin-title-text {
+    height: 72px;
+    line-height: 72px;
+}
+#index-body-addAdmin #addAdmin-buttons {
+    margin-top: 50px;
+}
