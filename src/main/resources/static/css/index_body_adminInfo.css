@@ -5,34 +5,41 @@
 
 /*显示区域高度*/
 #index-body-adminInfo {
-    height: 750px;
-    margin-top: 50px;
+    height: 550px;
+    margin-top: 25px;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 200px;
+    padding: 50px 20px 50px 20px;
+    background-color: #33334b;
+    border-radius: 10px;
 }
 #index-body-adminInfo #adminInfo-hello {
     margin-bottom: 10px;
+    color: white;
 }
 #index-body-adminInfo #adminInfo-card {
     margin-top: 75px;
+    margin-left: 10px;
 }
 #index-body-adminInfo #adminInfo-split {
     height: 2px;
     border-radius: 1px;
-    background-color: #d3d3d3;
+    background-color: #389466;
 }
 #index-body-adminInfo #adminInfo-hello-img {
     width: 72px;
     height: 72px;
 }
 #index-body-adminInfo #adminInfo-hello-email {
-    color: gray;
+    color: lightgrey;
 }
 #index-body-adminInfo .card {
-    background-color: white;
+    background-color: #42425f;
     padding-right: 30px;
     border-radius: 4px;
 }
 #index-body-adminInfo .card-left {
-    background-color: #0078d7;
+    background-color: #389466;
     width: 140px;
     height: 140px;
 }
@@ -47,13 +54,17 @@
     padding-left: 30px;
 }
 #index-body-adminInfo .card-right-title {
-    color: #585858;
+    color: white;
 }
 #index-body-adminInfo .card-right-detail {
-    color: gray;
+    color: lightgrey;
+}
+#index-body-adminInfo .card-right a{
+    color: #389466;
 }
 #index-body-adminInfo #adminInfo-card-vertical-spilit {
     height: 20px;
     width: 80px;
     float: left;
 }
+

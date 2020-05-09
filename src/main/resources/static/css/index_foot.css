@@ -5,13 +5,14 @@
 
 #index-foot {
     font-size: 16px;
-    height: 70px;
+    height: 71px;
     color: #939393;
     line-height: 70px;
-    border-top: 1px solid #dddddd;
+    border-top: 1px solid #242637;
     margin: 0;
     padding: 0;
 }
+
 #index-foot p {
     margin-bottom: 0;
 }

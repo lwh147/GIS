@@ -3,18 +3,91 @@
  * 时间: 2020.4.10
  */
 
+
+/*导航栏默认背景颜色*/
+#index-navbar .navbar-default {
+    background-color: #33334b;
+    border-color: #389466;
+}
+
+/*导航栏默认文字颜色*/
+#index-navbar .navbar-header a {
+    color: #389466;
+}
+
+/*小屏幕导航栏弹出菜单按钮*/
+#index-navbar .navbar-header button {
+    border: none;
+    background-color: #33334b;
+}
+
+#index-navbar .navbar-header button:hover {
+    background-color: #41415f;
+}
+
+/*导航栏默认文字颜色*/
+#index-navbar .navbar-default .navbar-nav > li > a {
+    color: #cccccc;
+}
+
+/*导航栏下拉标签激活时颜色*/
+#index-navbar .navbar-default .navbar-nav > .open > a {
+    background-color: #389466;
+    color: white;
+}
+
+/*导航栏下拉菜单激活时下拉菜单背景色*/
+#index-navbar .navbar-default .navbar-nav > .open > .dropdown-menu {
+    background-color: #32324a;
+}
+
+/*导航栏下拉菜单激活时下拉菜单选项颜色*/
+#index-navbar .navbar-default .navbar-nav > .open > .dropdown-menu a {
+    color: #cccccc;
+}
+
+#index-navbar .navbar-default .navbar-nav > .open > .dropdown-menu a:hover {
+    color: white;
+}
+
+/*导航栏下拉菜单分割线*/
+#index-navbar .navbar-default .navbar-nav > .open > .dropdown-menu .divider {
+    background-color: #389466;
+}
+
 /*导航栏激活状态下的标签颜色设置*/
-#index-navbar .navbar .nav li.active a{
-    background-color: #0078d7;
+#index-navbar .navbar .nav li.active a {
+    background-color: #389466;
     color: white;
 }
+
 /*鼠标悬停在超链接上的颜色设置*/
-#index-navbar .navbar .nav li a:hover{
-    background-color: #0078d7;
+#index-navbar .navbar .nav li a:hover {
+    background-color: #389466;
     color: white;
 }
+
 /*搜索框输入错误提示文字显示区域*/
-#index-navbar #index-navbar-searchFrom #errors{
+#index-navbar #index-navbar-searchFrom #errors {
     padding-left: 2px;
     width: 180px;
+}
+
+/*搜索框*/
+#index-navbar #index-navbar-searchFrom input {
+    border: 0;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+/*搜索按钮*/
+#index-navbar #index-navbar-searchFrom button {
+    background-color: #41415f;
+    color: #cccccc;
+    border: none;
+}
+
+#index-navbar #index-navbar-searchFrom button:hover, #index-navbar #index-navbar-searchFrom button:active {
+    background-color: #515173;
 }

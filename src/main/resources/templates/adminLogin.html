@@ -18,16 +18,19 @@
     <!-- 引入网页图标 -->
     <link rel="icon" href="../static/src/icon.png" th:href="@{/src/icon.png}">
     <!-- 引入bootstrap默认css样式 -->
-    <link rel="stylesheet" href="../static/extlib/bootstrap-3.3.7/css/bootstrap.min.css" th:href="@{/extlib/bootstrap-3.3.7/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="../static/extlib/bootstrap-3.3.7/css/bootstrap.min.css"
+          th:href="@{/extlib/bootstrap-3.3.7/css/bootstrap.min.css}">
     <!-- 引入bootstrapValidator默认css样式 -->
-    <link rel="stylesheet" href="../static/extlib/bootstrapvalidator-0.5.3/css/bootstrapValidator.min.css" th:href="@{/extlib/bootstrapvalidator-0.5.3/css/bootstrapValidator.min.css}">
+    <link rel="stylesheet" href="../static/extlib/bootstrapvalidator-0.5.3/css/bootstrapValidator.min.css"
+          th:href="@{/extlib/bootstrapvalidator-0.5.3/css/bootstrapValidator.min.css}">
     <!-- 引入jquery和bootstrap的js插件 -->
     <!-- 注意：因为bootstrap和bootstrapValidator的js插件使用了jquery，所以jquery的引用必须放到bootstrap的js插件引用之前 -->
-    <script type="text/javascript" src="../static/extlib/jquery-3.4.1/jquery-3.4.1.min.js" th:src="@{/extlib/jquery-3.4.1/jquery-3.4.1.min.js}"></script>
-    <script type="text/javascript" src="../static/extlib/bootstrap-3.3.7/js/bootstrap.min.js" th:src="@{/extlib/bootstrap-3.3.7/js/bootstrap.min.js}"></script>
-    <script type="text/javascript" src="../static/extlib/bootstrapvalidator-0.5.3/js/bootstrapValidator.min.js" th:src="@{/extlib/bootstrapvalidator-0.5.3/js/bootstrapValidator.min.js}"></script>
-    <!-- 引入jquery的md5加密插件 -->
-    <!-- <script type="test/javascript" src="../static/extlib/jquerymd5/md5.pro.js" th:src="@{/extlib/jquerymd5/md5.pro.js}"></script> -->
+    <script type="text/javascript" src="../static/extlib/jquery-3.4.1/jquery-3.4.1.min.js"
+            th:src="@{/extlib/jquery-3.4.1/jquery-3.4.1.min.js}"></script>
+    <script type="text/javascript" src="../static/extlib/bootstrap-3.3.7/js/bootstrap.min.js"
+            th:src="@{/extlib/bootstrap-3.3.7/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" src="../static/extlib/bootstrapvalidator-0.5.3/js/bootstrapValidator.min.js"
+            th:src="@{/extlib/bootstrapvalidator-0.5.3/js/bootstrapValidator.min.js}"></script>
     <!-- 引入自己的css库文件-->
     <link rel="stylesheet" href="../static/css/adminLogin.css" th:href="@{/css/adminLogin.css}">
     <!-- 引入自己的js库文件-->
@@ -66,10 +69,10 @@
                     </label>
                 </div>
 
-                <button type="submit" class="btn btn-primary" id="loginButton" data-loading-text="正在登录...">
+                <button type="submit" class="btn btn-primary main" id="loginButton" data-loading-text="正在登录...">
                     登录
                 </button>
-                <button type="button" class="btn btn-primary" id="resetButton">重置</button>
+                <button type="button" class="btn btn-primary other" id="resetButton">重置</button>
 
             </form>
         </div>

@@ -1,4 +1,5 @@
-<div class="modal fade" id="adminInfo-resetPassword-modal" tabindex="-1" role="dialog" aria-labelledby="adminInfo-password-editModal-title"
+<div class="modal fade" id="adminInfo-resetPassword-modal" tabindex="-1" role="dialog"
+     aria-labelledby="adminInfo-password-editModal-title"
      aria-describedby="管理员密码修改">
     <!--
      作者: lwh
@@ -6,32 +7,58 @@
      描述: 修改密码的模态框
     -->
     <div class="modal-dialog modal-sm" role="document" aria-hidden="true">
-        <div class="modal-content">
-            <div class="modal-header" style="background-color: #0078d7; color: white;">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <div class="modal-content" style="background-color: #1e1e2f; color: #cccccc;">
+            <div class="modal-header" style="background-color: #389466; color: white; border: none;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
                 <h4 class="modal-title" id="adminInfo-password-editModal-title">修改密码</h4>
             </div>
             <div class="modal-body">
                 <form id="adminInfo-resetPassword-modal-form">
                     <div class="form-group">
                         <label for="adminInfo-newPasswordInput">新密码</label>
-                        <input type="password" class="form-control" id="adminInfo-newPasswordInput" name="adminInfo-newPasswordInput">
+                        <input type="password" class="form-control" id="adminInfo-newPasswordInput"
+                               name="adminInfo-newPasswordInput" style="    border: 0;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;">
                     </div>
                     <div class="form-group">
                         <label for="adminInfo-newPasswordConfirm">请再次输入新密码</label>
-                        <input type="password" class="form-control" id="adminInfo-newPasswordConfirm" name="adminInfo-newPasswordConfirm">
+                        <input type="password" class="form-control" id="adminInfo-newPasswordConfirm"
+                               name="adminInfo-newPasswordConfirm" style="    border: 0;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;">
                     </div>
-                    <div style="margin-left: -15px; margin-right: -15px; padding-top: 15px; padding-right: 15px; text-align: right; border-top: 1px solid #e5e5e5;">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="submit" class="btn btn-primary" data-loading-text="正在修改...">保存修改</button>
+                    <div style="margin-left: -15px; margin-right: -15px; padding-top: 15px; padding-right: 15px; text-align: right; border-top: 1px solid #32324b;">
+                        <button type="button" class="btn btn-default other" data-dismiss="modal" style="
+    background-color: #33334b;
+    color: #cccccc;
+    border: none;">取消
+                        </button>
+                        <button type="submit" class="btn btn-primary main" data-loading-text="正在修改..." style="background-color: #389466;
+    color: #cccccc;
+    border: none;">保存修改
+                        </button>
                     </div>
+                    <style type="text/css">
+                        #adminInfo-resetPassword-modal-form button.main:hover, #adminInfo-resetPassword-modal-form button.main:active {
+                            background-color: #276546;
+                        }
+
+                        #adminInfo-resetPassword-modal-form button.other:hover, #adminInfo-resetPassword-modal-form button.other:active {
+                            background-color: #276546;
+                        }
+                    </style>
                 </form>
             </div>
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="adminInfo-resetEmail-modal" tabindex="-1" role="dialog" aria-labelledby="adminInfo-email-editModal-title"
+<div class="modal fade" id="adminInfo-resetEmail-modal" tabindex="-1" role="dialog"
+     aria-labelledby="adminInfo-email-editModal-title"
      aria-describedby="管理员邮箱修改">
     <!--
      作者: lwh
@@ -39,22 +66,43 @@
      描述: 修改邮箱的模态框
     -->
     <div class="modal-dialog modal-sm" role="document" aria-hidden="true">
-        <div class="modal-content">
-            <div class="modal-header" style="background-color: #0078d7; color: white;">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <div class="modal-content" style="background-color: #1e1e2f; color: #cccccc;">
+            <div class="modal-header" style="background-color: #389466; color: white; border: none;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
                 <h4 class="modal-title" id="adminInfo-email-editModal-title">修改邮箱</h4>
             </div>
             <div class="modal-body">
                 <form id="adminInfo-resetEmail-modal-form">
                     <div class="form-group">
                         <label for="adminInfo-newEmailInput">请输入新邮箱地址</label>
-                        <input type="email" class="form-control" id="adminInfo-newEmailInput" name="adminInfo-newEmailInput"
-                               placeholder="username@example.com">
+                        <input type="email" class="form-control" id="adminInfo-newEmailInput"
+                               name="adminInfo-newEmailInput"
+                               placeholder="username@example.com" style="    border: 0;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;">
                     </div>
-                    <div style="margin-left: -15px; margin-right: -15px; padding-top: 15px; padding-right: 15px; text-align: right; border-top: 1px solid #e5e5e5;">
-                        <button type="button" class="btn btn-default right" data-dismiss="modal">取消</button>
-                        <button type="submit" class="btn btn-primary right" data-loading-text="正在修改...">保存修改</button>
+                    <div style="margin-left: -15px; margin-right: -15px; padding-top: 15px; padding-right: 15px; text-align: right; border-top: 1px solid #32324b;">
+                        <button type="button" class="btn btn-default right" data-dismiss="modal" style="
+    background-color: #33334b;
+    color: #cccccc;
+    border: none;">取消
+                        </button>
+                        <button type="submit" class="btn btn-primary right" data-loading-text="正在修改..." style="background-color: #389466;
+    color: #cccccc;
+    border: none;">保存修改
+                        </button>
                     </div>
+                    <style type="text/css">
+                        #adminInfo-resetEmail-modal-form button.main:hover, #adminInfo-resetEmail-modal-form button.main:active {
+                            background-color: #276546;
+                        }
+
+                        #adminInfo-resetEmail-modal-form button.other:hover, #adminInfo-resetEmail-modal-form button.other:active {
+                            background-color: #276546;
+                        }
+                    </style>
                 </form>
             </div>
         </div>

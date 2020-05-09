@@ -103,9 +103,9 @@ function initAddAdmin(){
             newUserPassword: newUserPassword,
             newUserEmail: newUserEmail
         });
-        //使用ajax提交表单进行注册-------------------
+        //使用ajax提交表单进行注册
         $.ajax({
-            url: "",
+            url: "addAdmin",
             type: "post",
             data: jsonStr,
             contentType: "application/json;charset=utf-8",

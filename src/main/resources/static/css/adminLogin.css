@@ -3,6 +3,18 @@
  * 时间: 2020.3.6
  */
 
+/*  样式中使用的主题颜色
+背景色: #1e1e2f
+次要按钮颜色: #33334b
+次要按钮激活颜色: #42425f
+绿色: #389466
+深绿色: #276546
+文字颜色：#cccccc
+高亮色: white
+选项色: #e14eca
+分块内容背景色: #27293d
+*/
+
 /*页面背景图片*/
 body {
     background-image: url("../src/adminLogin_bg.jpg");
@@ -11,25 +23,57 @@ body {
     background-attachment: fixed;
     background-size: cover;
 }
+
 /*登录框所在区域*/
 #loginFormArea {
     margin-top: 50px;
-    background-color: white;
-    box-shadow:5px 5px 10px 5px rgba(0,0,0,0.3);
+    background-color: #1e1e2f;
+    box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     padding-bottom: 20px;
     padding-left: 30px;
     padding-right: 30px;
+    color: #cccccc;
 }
+
 /*登录框标题*/
 #loginFormTitle {
-    border-bottom: 1px solid #e6e6e6;
-    margin-bottom: 20px;
-    margin-left: -20px;
-    margin-right: -20px;
+    height: 30px;
+    border-bottom: 1px solid #cccccc;
+    margin: 20px -20px 20px -20px;
+    text-align: center;
+    color: white;
 }
-/*按钮*/
-#loginForm button {
+
+/*登录表单输入框*/
+#loginForm input {
+    border: 0;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+/*登录重置按钮*/
+#loginForm button.main {
     width: 100%;
     margin-top: 10px;
+    background-color: #389466;
+    color: #cccccc;
+    border: none;
+}
+
+#loginForm button.main:hover, #loginForm button.main:active {
+    background-color: #276546;
+}
+
+#loginForm button.other {
+    width: 100%;
+    margin-top: 10px;
+    background-color: #33334b;
+    color: #cccccc;
+    border: none;
+}
+
+#loginForm button.other:hover, #loginForm button.other:active {
+    background-color: #42425f;
 }
