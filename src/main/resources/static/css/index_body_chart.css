@@ -1,0 +1,14 @@
+/**
+ * 作者: lwh
+ * 时间: 2020.5.20
+ * 描述：图表展示页面定制css
+ */
+
+/*图表展示页面*/
+#index-body-chart {
+    min-height: 800px;
+    margin: 0;
+    padding: 20px 0 20px 0;
+    color: #dddddd;
+    background-color: #1b1b2d;
+}

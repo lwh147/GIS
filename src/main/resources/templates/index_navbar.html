@@ -7,15 +7,19 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                <button type="button" class="btn navbar-toggle collapsed" data-toggle="collapse"
                         data-target="#navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="javascript:void(0)" onclick="showBodyIndex()" class="navbar-brand"><span
-                        class="glyphicon glyphicon-grain" aria-hidden="true"></span></a>
+                <div>
+                    <a href="javascript:void(0)" onclick="showBodyIndex()" class="navbar-brand">
+                        <span class="glyphicon glyphicon-grain" aria-hidden="true"></span>
+                    </a>
+                    <div></div>
+                </div>
             </div>
 
             <div class="collapse navbar-collapse" id="navbar-collapse-1">
@@ -44,10 +48,9 @@
                                     <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>&nbsp;添加管理员
                                 </a>
                             </li>
-                            <li role="separator" class="divider"></li>
                             <li>
                                 <a href="javascript:void(0)" onclick="logout()">
-                                    <div class="text-danger">
+                                    <div>
                                         <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;退出登录
                                     </div>
                                 </a>
@@ -57,11 +60,11 @@
                 </ul>
                 <form class="navbar-form navbar-right" role="search" id="index-navbar-searchFrom">
                     <div class="form-group">
-                        <label for="searchContentInput"></label>
-                        <input type="text" class="form-control" id="searchContentInput" name="searchContentInput"
-                               placeholder="输入内容以搜索">
+                        <label class="control-label" for="searchContentInput"></label>
+                        <input type="text" class="form-control ipt-dark" id="searchContentInput"
+                               name="searchContentInput" placeholder="输入内容以搜索">
                     </div>
-                    <button type="submit" class="btn btn-default"
+                    <button type="submit" class="btn btn-sec"
                             data-loading-text="<span class='glyphicon glyphicon-search' aria-hidden='true'></span> 搜索中...">
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 搜索
                     </button>

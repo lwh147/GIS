@@ -3,7 +3,7 @@
  * 时间: 2020.4.13
  * 描述: 添加管理员页面初始化----------
  */
-function initAddAdmin(){
+function initAddAdmin() {
     //重置按钮的点击事件监听函数注册
     $("#addAdminResetButton").click(function () {
         $("#addAdmin-form").data("bootstrapValidator").resetForm(true);
@@ -19,7 +19,7 @@ function initAddAdmin(){
             invalid: "glyphicon glyphicon-remove",
             validating: "glyphicon glyphicon-refresh"
         },
-        fields:{
+        fields: {
             newUserName: {
                 message: "*用户名不合法",
                 validators: {
@@ -88,7 +88,7 @@ function initAddAdmin(){
                 }
             }
         }
-    }).on("success.form.bv", function(e) {
+    }).on("success.form.bv", function (e) {
         //注册表单被提交后且验证成功的事件的监听函数以使用ajax提交表单数据
         //阻止正常提交表单
         e.preventDefault();

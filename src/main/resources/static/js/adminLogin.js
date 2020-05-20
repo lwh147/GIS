@@ -45,7 +45,7 @@ $(document).ready(function () {
             invalid: "glyphicon glyphicon-remove",
             validating: "glyphicon glyphicon-refresh"
         },
-        fields:{
+        fields: {
             userNameInput: {
                 message: "*用户名不合法",
                 validators: {
@@ -82,7 +82,7 @@ $(document).ready(function () {
                 }
             }
         }
-    }).on("success.form.bv", function(e) {
+    }).on("success.form.bv", function (e) {
         //注册表单被提交后且验证成功的事件的监听函数以使用ajax提交表单数据
         //阻止正常提交表单
         e.preventDefault();
@@ -106,7 +106,7 @@ $(document).ready(function () {
             async: false,
             dataType: "json",
             success: function (data) {
-                if (data === "0"){
+                if (data === "0") {
                     //验证失败，提示用户验证失败
                     myAlert("alert", "alert", "用户名或密码错误(x_x)！");
                     /*更改用户名密码为未验证状态，对模态框的生命周期时间进行监听，当模态框消失时触发操作
@@ -117,23 +117,23 @@ $(document).ready(function () {
                     */
                     //更改登录按钮的登陆状态
                     $("#loginButton").button("reset");
-                }else {
+                } else {
                     //将用户信息保存到sessionStorage中
                     saveData2Ses(data);
                     //登陆成功
-                    if($("input[name='rememberCheckbox']").prop("checked")) {
+                    if ($("input[name='rememberCheckbox']").prop("checked")) {
                         //需要记住密码,判断是否已经设置cookie，有的话不必设置cookie
                         if (!isSaved) {
                             //没有已保存到cookie中的账户信息，设置cookie
                             let base64_cname = window.btoa(cname);
                             let base64_cvalue = base64_userName + "_" + base64_password;
                             setCookie(base64_cname, base64_cvalue, -1);
-                        }else if (base64_userName !== base64_savedUserName){
+                        } else if (base64_userName !== base64_savedUserName) {
                             //当前输入的账户信息与已保存到cookie中的账户信息不符，重新设置cookie保存新的账户信息
                             let base64_cname = window.btoa(cname);
                             let base64_cvalue = base64_userName + "_" + base64_password;
                             setCookie(base64_cname, base64_cvalue, -1);
-                        }else {
+                        } else {
                             //当前输入的账户信息与已保存到cookie中的账户信息相同，不必进行保存
                         }
                     }
@@ -147,6 +147,7 @@ $(document).ready(function () {
         });
     });
 });
+
 /**
  * 作者: lwh
  * 时间: 2020.2.26
@@ -163,11 +164,11 @@ function setCookie(cname, cvalue, exhours) {
      */
     let cookieStr = cname + "=" + cvalue;
     //当hours>0时，该cookie存在指定时间；等于0时代表立即删除该cookie；小于0时该cookie会存在至会话结束
-    if (exhours === 0){
+    if (exhours === 0) {
         cookieStr += "; expires=0";
-    }else if (exhours < 0){
+    } else if (exhours < 0) {
         cookieStr += "; expires=-1";
-    }else {
+    } else {
         //设置到期时间
         let expires = new Date();
         expires.setTime(expires.getTime() + exhours * 60 * 60 * 1000);
@@ -176,6 +177,7 @@ function setCookie(cname, cvalue, exhours) {
     //设置cookie
     document.cookie = cookieStr;
 }
+
 /**
  * 作者: lwh
  * 时间: 2020.2.26
@@ -185,9 +187,9 @@ function getCookie(cname) {
     //读取cookie时cookie的字符串结构为“name1=value1; name2=value2”
     let reg = new RegExp("(^| )" + cname + "=([^;]*)(;|$)");
     let cookieStr = document.cookie;
-    if (cookieStr !== ""){
+    if (cookieStr !== "") {
         let arr = cookieStr.match(reg);
-        if (arr[2] !== ""){
+        if (arr[2] !== "") {
             return arr[2];
         }
     }

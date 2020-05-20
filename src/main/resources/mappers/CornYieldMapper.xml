@@ -2,26 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.gis.dao.CornYieldDao">
     <resultMap id="cornYieldMap" type="com.gis.entity.CornYield">
-        <id property="cornFieldId" column="cornFieldId"/>
-        <result property="moistureYield" column="moistureYield"/>
-        <result property="boxWeight" column="boxWeight"/>
-        <result property="beforeDehydration" column="beforeDehydration"/>
-        <result property="afterDehydration" column="afterDehydration"/>
-        <result property="moistureContent" column="moistureContent"/>
-        <result property="dryYield" column="dryYield"/>
+        <id property="cornFieldId" column="cornFieldId"></id>
+        <result property="moistureYield" column="moistureYield"></result>
+        <result property="boxWeight" column="boxWeight"></result>
+        <result property="beforeDehydration" column="beforeDehydration"></result>
+        <result property="afterDehydration" column="afterDehydration"></result>
+        <result property="moistureContent" column="moistureContent"></result>
+        <result property="dryYield" column="dryYield"></result>
     </resultMap>
     <insert id="save" >
         insert into cornYield (cornFieldId,moistureYield, boxWeight, beforeDehydration, afterDehydration, moistureContent, dryYield)
         values (#{cornFieldId},#{moistureYield}, #{boxWeight}, #{beforeDehydration}, #{afterDehydration}, #{moistureContent}, #{dryYield});
     </insert>
-    <select id="getAllYield" resultMap="cornYieldMap">
+    <select id="getAll" resultMap="cornYieldMap">
         select * from cornYield
     </select>
-    <select id="getYieldById" resultMap="cornYieldMap">
+    <select id="getById" resultMap="cornYieldMap">
         select * from cornYield
         where cornFieldId = #{cornFieldId}
     </select>
-    <delete id="delete">
+    <delete id="deleteById">
         delete from cornYield
         where cornFieldId = #{cornFieldId}
     </delete>

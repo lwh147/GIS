@@ -1,71 +1,63 @@
-<div class="container" id="index-body-addAdmin" xmlns:th="http://www.thymeleaf.org">
+<div class="container mypanel" id="index-body-addAdmin" xmlns:th="http://www.thymeleaf.org">
     <!--
      作者: lwh
      时间: 2020.5.2
      描述：添加管理员
     -->
-    <div class="row" id="addAdmin-title">
-        <div class="col-lg-10
-                    col-md-10">
-            <div class="media">
-                <div class="media-left">
-                    <img id="addAdmin-icon" src="../static/src/addAdmin.png" th:src="@{/src/addAdmin.png}"
-                         alt="添加">
-                </div>
-                <div class="media-right">
-                    <h2 class="media-body" id="addAdmin-title-text">请输入新添加管理员信息</h2>
-                </div>
+    <div class="mypanel-header">
+        <div class="media">
+            <div class="media-left">
+                <img src="../static/src/addAdmin.png" th:src="@{/src/addAdmin.png}" alt="添加">
+            </div>
+            <div class="media-right">
+                <h2 class="media-heading" id="addAdmin-title-text">请输入新添加管理员信息</h2>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-11 col-md-11">
-            <div id="addAdmin-split"></div>
-        </div>
-    </div>
-    <div class="row">
+    <div class="mypanel-title-content-split"></div>
+    <div class="mypanel-content">
         <div class="col-lg-offset-2 col-lg-6
                     col-md-offset-2 col-md-8">
             <form class="form-horizontal" id="addAdmin-form">
                 <div class="form-group">
-                    <label for="newUserName" class="col-sm-2 control-label">用户名</label>
+                    <label for="newUserName" class="control-label col-sm-2">用户名</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="newUserName" name="newUserName"
+                        <input type="text" class="form-control ipt-dark" id="newUserName" name="newUserName"
                                placeholder="6-10位，由字母、数字、点或下划线组成">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="newUserPassword" class="col-sm-2 control-label">密码</label>
+                    <label for="newUserPassword" class="control-label col-sm-2">密码</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="newUserPassword" name="newUserPassword"
+                        <input type="password" class="form-control ipt-dark" id="newUserPassword" name="newUserPassword"
                                placeholder="必须为6位">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="newUserPasswordConfirm" class="col-sm-2 control-label">确认密码</label>
+                    <label for="newUserPasswordConfirm" class="control-label col-sm-2">确认密码</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="newUserPasswordConfirm"
+                        <input type="password" class="form-control ipt-dark" id="newUserPasswordConfirm"
                                name="newUserPasswordConfirm"
                                placeholder="请再次输入密码">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="newUserEmail" class="col-sm-2 control-label">邮箱</label>
+                    <label for="newUserEmail" class="control-label col-sm-2">邮箱</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="newUserEmail" name="newUserEmail"
+                        <input type="email" class="form-control ipt-dark" id="newUserEmail" name="newUserEmail"
                                placeholder="username@example.com">
                     </div>
                 </div>
                 <div class="form-group" id="addAdmin-buttons">
                     <div class="col-sm-offset-2 col-sm-10">
                         <div class="col-sm-5">
-                            <button type="submit" class="btn btn-primary col-sm-12 main" id="addAdminButton"
+                            <button type="submit" class="btn btn-main" id="addAdminButton"
                                     data-loading-text="正在添加...">
                                 添加
                             </button>
                         </div>
                         <div class="col-sm-5">
-                            <button type="button" class="btn btn-default col-sm-12 other" id="addAdminResetButton">重置
+                            <button type="button" class="btn btn-sec" id="addAdminResetButton">重置
                             </button>
                         </div>
                     </div>

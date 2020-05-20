@@ -3,24 +3,22 @@
  时间: 2020.4.28
  描述: 自定义样式的alert的模态框
 -->
-<div aria-describedby="自定义警告框" aria-labelledby="alert-title" class="modal fade" id="alert" role="dialog"
+<div id="alert" aria-describedby="自定义警告框" aria-labelledby="alert-title" class="modal fade" role="dialog"
      tabindex="-1">
     <div aria-hidden="true" class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
-            <div class="modal-header" style="background-color: #389466; color: white;
-            border: none; padding: 5px 15px 5px 15px;">
-                <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span>
+            <div class="modal-header alert-modal-header">
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title" id="alert-title">系统提示</h4>
             </div>
-            <div class="modal-body" style="padding: 10px; background-color: #1e1e2f; color: #cccccc;">
+            <div class="modal-body alert-modal-body">
                 <div>
                     <h4 id="alert-message">用户名或密码错误！</h4>
                 </div>
-                <div style="text-align: right; margin-top: 20px;">
-                    <button class="btn btn-primary" data-dismiss="modal"
-                            style="background-color: #389466; color: #cccccc; border-color: #276546;"
-                            type="button">确定
+                <div class="alert-modal-body-foot">
+                    <button class="btn btn-main" data-dismiss="modal" type="button">确定
                     </button>
                 </div>
             </div>

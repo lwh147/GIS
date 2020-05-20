@@ -114,7 +114,7 @@ function getGlobalVars() {
     //获取网页加载前进行的操作
     let cclfn = window.sessionStorage.getItem("clfn");
     //如果为空加载首页，如果不为空说明刷新网页前处于非首页状态
-    if (cclfn !== null){
+    if (cclfn !== null) {
         currentComponent = {
             "clfn": cclfn,
             "cn": window.sessionStorage.getItem("cn"),

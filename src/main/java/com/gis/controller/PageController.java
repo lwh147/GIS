@@ -59,4 +59,22 @@ public class PageController {
     public String index_body_addAdmin() {
         return "index_body_addAdmin";
     }
+
+    //加载测试页面
+    @RequestMapping("/test")
+    public String test() {
+        return "test";
+    }
+
+    //加载图表展示页面
+    @RequestMapping("/index_body_chart")
+    public String index_body_chart() {
+        return "index_body_chart";
+    }
+
+    //加载侧边栏
+    @RequestMapping("/index_body_sidebar")
+    public String index_body_sidebar() {
+        return "index_body_sidebar";
+    }
 }
