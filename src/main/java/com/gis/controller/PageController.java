@@ -77,4 +77,10 @@ public class PageController {
     public String index_body_sidebar() {
         return "index_body_sidebar";
     }
+
+    //加载株高和叶绿素图表
+    @RequestMapping("/chart_cornHeightAndChlorophyll")
+    public String chart_cornHeightAndChlorophyll() {
+        return "index_body_chart/chart_cornHeightAndChlorophyll";
+    }
 }

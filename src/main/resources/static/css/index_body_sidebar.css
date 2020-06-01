@@ -18,8 +18,10 @@
 /*侧边栏主体，默认隐藏*/
 .sidebar {
     position: fixed;
-    top: 51px;
-    left: -200px;
+    /*top,left,right,bottom:相对网页屏幕位置*/
+    /*maring-*:相对父级元素位置*/
+    margin-top: 0;
+    margin-left: -200px;
     width: 200px;
     height: 710px;
     background-color: #282841;
@@ -29,7 +31,7 @@
 
 /*展开*/
 .side {
-    left: 0;
+    margin-left: 0;
 }
 
 /*菜单项列表*/
@@ -48,7 +50,7 @@
 }
 
 
-.sidebar > ul ul{
+.sidebar > ul ul {
     width: 100%;
     margin: 0;
     padding: 0;
@@ -114,7 +116,7 @@
 .sidebar .btn-sidebar {
     position: absolute;
     left: 200px;
-    top: 20px;
+    top: 13px;
     margin: 0;
     padding: 0;
     border: none;

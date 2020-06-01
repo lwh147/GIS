@@ -22,4 +22,19 @@ function sidebar() {
     $(".sidebar .btn-sidebar").toggleClass("btn-side");
     $(".sidebar").toggleClass("side");
     $(".sidebar > div").toggleClass("sidebar-prompt");
+    /*更改sidebar的兄弟节点在侧边栏展开和收起时的宽度*/
+    if ($(".sidebar").hasClass("side")) {
+        $(".sidebar").prev().css("width", "calc( 100% - 240px)");
+    } else {
+        $(".sidebar").prev().css("width", "calc( 100% - 40px)");
+    }
+}
+
+/**
+ * 作者: lwh
+ * 时间: 2020.5.31
+ * 描述: 为导航栏的显示和隐藏添加监听函数
+ */
+function addSidebarClickEventHandlerFunction(fn) {
+    document.getElementsByClassName("sidebar")[0].addEventListener("click", fn);
 }

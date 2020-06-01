@@ -62,7 +62,8 @@
     color: #dddddd;
 }
 
-.btn-main:hover, .btn-main:active {
+.btn-main:hover, .btn-main:active, .btn-main:focus {
+    outline: 0;
     background-color: #35875c;
     color: white;
 }
@@ -74,6 +75,7 @@
 }
 
 .btn-sec:hover, .btn-sec:active, .btn-sec:focus {
+    outline: 0;
     background-color: #383855;
     color: white;
 }

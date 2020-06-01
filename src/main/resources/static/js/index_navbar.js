@@ -92,8 +92,8 @@ function showChart() {
                 $("#index-body-container").append(data);
                 //更新当前操作并激活对应导航栏菜单项
                 saveCurrentOpt2SesAndUpdateNavbar(systemComponents.c4);
-                //初始化管理员信息页面
-                initChart();
+                //初始化图表界面
+                indexBodyChartInit();
             },
             error: function (error) {
                 alert("----ajax请求加载图表展示网页执行出错！错误信息如下：----\n" + error.responseText);
