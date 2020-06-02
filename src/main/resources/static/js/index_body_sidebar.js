@@ -24,9 +24,9 @@ function sidebar() {
     $(".sidebar > div").toggleClass("sidebar-prompt");
     /*更改sidebar的兄弟节点在侧边栏展开和收起时的宽度*/
     if ($(".sidebar").hasClass("side")) {
-        $(".sidebar").prev().css("width", "calc( 100% - 240px)");
+        $(".sidebar").prev().css("width", "calc( 100% - 225px)");
     } else {
-        $(".sidebar").prev().css("width", "calc( 100% - 40px)");
+        $(".sidebar").prev().css("width", "calc( 100% - 25px)");
     }
 }
 

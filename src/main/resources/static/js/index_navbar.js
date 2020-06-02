@@ -164,6 +164,36 @@ function showAddAdmin() {
 
 /**
  * 作者: lwh
+ * 时间: 2020.6.2
+ * 描述: 管理员列表---------
+ */
+function showAllAdmin() {
+    if (!isLoaded(systemComponents.c8.cid)) {
+        //获取
+        $.ajax({
+            url: systemComponents.c8.curl,
+            type: "get",
+            async: true,
+            dataType: "html",
+            success: function (data) {
+                //移除之前的组件
+                $("#" + currentComponent.cid).remove();
+                //加载
+                $("#index-body-container").append(data);
+                //更新当前操作并激活对应导航栏菜单项
+                saveCurrentOpt2SesAndUpdateNavbar(systemComponents.c8);
+                //初始化管理员信息页面
+                initAllAdmin();
+            },
+            error: function (error) {
+                alert("----ajax请求加载显示管理员信息执行出错！错误信息如下：----\n" + error.responseText);
+            }
+        });
+    }
+}
+
+/**
+ * 作者: lwh
  * 时间: 2020.4.12
  * 描述: 退出登录
  */

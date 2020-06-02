@@ -7,13 +7,77 @@ let chart_components = {
         curl: "index_body_sidebar"
     },
     c1: {
-        clfn: "loadCornHeightAndChlorophyllChart()",
+        clfn: "loadChAndChlChart()",
         cname: "株高和叶绿素",
-        cid: "chart-cornHeightAndChlorophyll",
-        curl: "chart_cornHeightAndChlorophyll"
+        cid: "chart-chAndChl",
+        curl: "chart_chAndChl"
     }
 };
 
+/*
+let chart_components = {
+    c0: {
+        clfn: "loadSidebar()",
+        cname: "侧边导航栏",
+        cid: "index-body-sidebar",
+        curl: "index_body_sidebar"
+    },
+    c1: {
+        clfn: "loadChAndChlChart()",
+        cname: "株高和叶绿素",
+        cid: "chart-chAndChl",
+        curl: "chart_chAndChl"
+    },
+    c2: {
+        clfn: "loadVWCChart()",
+        cname: "体积含水量",
+        cid: "chart-vwc",
+        curl: "chart_vwc"
+    },
+    c3: {
+        clfn: "loadLAIChart()",
+        cname: "叶面积指数",
+        cid: "chart-lai",
+        curl: "chart_lai"
+    },
+    c4: {
+        clfn: "loadLAMChart()",
+        cname: "叶面积仪数据",
+        cid: "chart-lam",
+        curl: "chart_lam"
+    },
+    c5: {
+        clfn: "loadPreAndIrrChart()",
+        cname: "降雨量和灌溉量",
+        cid: "chart-preAndIrr",
+        curl: "chart_preAndIrr"
+    },
+    c6: {
+        clfn: "loadSRChart()",
+        cname: "气孔阻力",
+        cid: "chart-sr",
+        curl: "chart_sr"
+    },
+    c7: {
+        clfn: "loadSWCChart()",
+        cname: "土壤含水量",
+        cid: "chart-swc",
+        curl: "chart_swc"
+    },
+    c8: {
+        clfn: "loadSWSChart()",
+        cname: "标准气象站",
+        cid: "chart-sws",
+        curl: "chart_sws"
+    },
+    c9: {
+        clfn: "loadYieldChart()",
+        cname: "产量",
+        cid: "chart-yield",
+        curl: "chart_yield"
+    }
+};
+*/
 /**
  * 作者: lwh
  * 时间: 2020.5.20
@@ -56,7 +120,7 @@ function loadSidebar() {
  * 时间: 2020.5.28
  * 描述: 加载株高和叶绿素的图表
  */
-function loadCornHeightAndChlorophyllChart() {
+function loadChAndChlChart() {
     if (!isLoaded(chart_components.c1.cid)) {
         $.ajax({
             url: chart_components.c1.curl,
@@ -66,9 +130,11 @@ function loadCornHeightAndChlorophyllChart() {
             success: function (data) {
                 $("#index-body-chart #index-body-chart-container").append(data);
                 //初始化株高和叶绿素含量图表
-                cornHeightAndChloChartInit();
+                chart_chAndChl_init();
                 //初始化叶面积仪数据表
-                cornLeafAreaMeterChartInit();
+                chart_lam_init();
+                //初始化叶面积仪数据表
+                chart_yield_init();
             },
             error: function (error) {
                 alert("----ajax请求加载株高和叶绿素图表执行出错！错误信息如下：----\n" + error.responseText);
@@ -81,11 +147,11 @@ function loadCornHeightAndChlorophyllChart() {
  * 作者: SilentSherlock
  * 描述：玉米株高和叶绿素图表初始化
  */
-function cornHeightAndChloChartInit() {
+function chart_chAndChl_init() {
     //加载默认样区的数据
-    cornHeightAndChloChart();
+    chart_chAndChl_generate();
     //样区选择按钮监听事件注册
-    $("#chart-cornHeightAndChlorophyll .nav-pills .dropdown-menu li a").click(function () {
+    $("#chart-chAndChl .nav-pills .dropdown-menu li a").click(function () {
         //直接使用this并不能获得触发事件的对象，需要使用$(this)
         let clickedItemValue = $(this).text();
         //获得属性选择中第二个span
@@ -95,11 +161,11 @@ function cornHeightAndChloChartInit() {
         if (preAttrValue !== clickedItemValue) {
             //使用$表明这是一个jquery对象,防止使用方法时冲突
             $(clickedBtn[1]).text(clickedItemValue);
-            let newDOY = $("#chart-cornHeightAndChlorophyll .nav-pills .dropdown button span:eq(1)").text();
-            let newTRT = $("#chart-cornHeightAndChlorophyll .nav-pills .dropdown button span:eq(4)").text();
+            let newDOY = $("#chart-chAndChl .nav-pills .dropdown button span:eq(1)").text();
+            let newTRT = $("#chart-chAndChl .nav-pills .dropdown button span:eq(4)").text();
             console.log("DOY: " + newDOY + "\nTRT: " + newTRT);
             //更新图表
-            cornHeightAndChloChart(newDOY, newTRT);
+            chart_chAndChl_generate(newDOY, newTRT);
         }
     });
 }
@@ -108,11 +174,11 @@ function cornHeightAndChloChartInit() {
  * 作者: SilentSherlock
  * 描述：玉米叶面积仪数据图表初始化
  */
-function cornLeafAreaMeterChartInit() {
+function chart_lam_init() {
     //加载默认样区的数据
-    cornLeafAreaMeterChart();
+    chart_lam_generate();
     //样区选择按钮监听事件注册
-    $("#chart-cornLeafAreaMeter .nav-pills .dropdown-menu li a").click(function () {
+    $("#chart-lam .nav-pills .dropdown-menu li a").click(function () {
         //直接使用this并不能获得触发事件的对象，需要使用$(this)
         let clickedItemValue = $(this).text();
         //获得属性选择中第二个span
@@ -124,9 +190,17 @@ function cornLeafAreaMeterChartInit() {
             $(clickedBtn[1]).text(clickedItemValue);
             console.log("DOY: " + clickedItemValue);
             //更新图表
-            cornLeafAreaMeterChart(clickedItemValue);
+            chart_lam_generate(clickedItemValue);
         }
     });
+}
+
+/**
+ * 作者: SilentSherlock
+ * 描述：玉米产量图表初始化
+ */
+function chart_yield_init() {
+    chart_yield_generate();
 }
 
 /**
@@ -135,7 +209,7 @@ function cornLeafAreaMeterChartInit() {
  * 函数根据DOY属性一次获得多条数据
  * 画图时则根据TRT属性,确定一个扇形地块,分为三部分,画三个图
  */
-function cornHeightAndChloChart(DOY = "177", TRT = "1") {
+function chart_chAndChl_generate(DOY = "177", TRT = "1") {
 //从后端取数据
     let chartData = getChartData("corn/cornHeightAndChloDOY", JSON.stringify({DOY: DOY}), 1);
     //提取出所需地块
@@ -222,9 +296,9 @@ function cornHeightAndChloChart(DOY = "177", TRT = "1") {
         ]
     };
 
-    let cornHandChChart1 = getAndInitChart("chart-chac-1");
-    let cornHandChChart2 = getAndInitChart("chart-chac-2");
-    let cornHandChChart3 = getAndInitChart("chart-chac-3");
+    let cornHandChChart1 = getAndInitChart("chart-chAndChl-1");
+    let cornHandChChart2 = getAndInitChart("chart-chAndChl-2");
+    let cornHandChChart3 = getAndInitChart("chart-chAndChl-3");
 
     cornHandChChart1.setOption(partOption1);
     cornHandChChart2.setOption(partOption2);
@@ -246,7 +320,7 @@ function cornHeightAndChloChart(DOY = "177", TRT = "1") {
  * 作者: SilentSherlock
  * 描述：画玉米叶面积仪相关数据
  */
-function cornLeafAreaMeterChart(DOY = "177") {
+function chart_lam_generate(DOY = "177") {
     //从后端取数据
     let chartData = getChartData("corn/cornLeafDOY", JSON.stringify({DOY: DOY}), 1);
 
@@ -300,6 +374,89 @@ function cornLeafAreaMeterChart(DOY = "177") {
     function resize() {
         chart.resize();
     }
+}
+
+/**
+ * 作者: SilentSherlock
+ * 描述：画玉米产量相关数据
+ */
+function chart_yield_generate(DOY = "177") {
+    //从后端取数据
+    let chartData = getChartData("corn/cornYield", null, 0);
+
+    let chartOption = {
+        legend: {},
+        tooltip: {},
+        dataset: {
+            source: chartData
+        },
+        xAxis: {
+            type: "category"
+        },
+        yAxis: {},
+        series: [
+            {
+                type: "line",
+                name: "产量（湿重）kg/hm2",
+                encode: {
+                    x: 3,
+                    y: 6
+                }
+            },
+            {
+                type: "line",
+                name: "产量（干重）kg/hm2",
+                encode: {
+                    x: 3,
+                    y: 4
+                }
+            }
+        ]
+    };
+
+    let chart = getAndInitChart("chart-yield-1");
+
+    chart.setOption(chartOption);
+
+    addSidebarClickEventHandlerFunction(function () {
+        setTimeout(resize, 500);
+    });
+    $(window).resize(resize);
+
+    function resize() {
+        chart.resize();
+    }
+
+    let html =
+        "<table class='table table-hover'>" +
+        "<thead>" +
+        "<tr>" +
+        "<th>编号</th>" +
+        "<th>产量（湿重）kg/hm2</th>" +
+        "<th>盒重g</th>" +
+        "<th>湿重g</th>" +
+        "<th>干重g</th>" +
+        "<th>含水率</th>" +
+        "<th>产量（干重）kg/hm2</th>" +
+        "</tr>" +
+        "</thead>" +
+        "<tbody>";
+
+    $.each(chartData, function (key, value) {
+        html += "<tr>" +
+            "<th scope='row'>" + value.cornFieldId + "</th>" +
+            "<td>" + value.moistureContent + "</td>" +
+            "<td>" + value.boxWeight + "</td>" +
+            "<td>" + value.beforeDehydration + "</td>" +
+            "<td>" + value.afterDehydration + "</td>" +
+            "<td>" + value.moistureContent + "</td>" +
+            "<td>" + value.dryYield + "</td>" +
+            "</tr>";
+    });
+
+    html += "</tbody></table>";
+
+    $("#chart-yield-2").append(html);
 }
 
 /**

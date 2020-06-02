@@ -51,6 +51,13 @@ let systemComponents = {
         "cid": "index-body-searchResult",
         "curl": "index_body_searchResult"
     }
+    ,
+    "c8": {
+        "clfn": "showAllAdmin()",
+        "cn": "管理员列表",
+        "cid": "index-body-allAdmin",
+        "curl": "index_body_allAdmin"
+    }
 };
 //记录当前用户处于的界面便于刷新
 let currentComponent = systemComponents.c2;

@@ -77,7 +77,7 @@ public class BussinessController {
 
         adminService.deleteAdmin(adminName, password);
         System.out.println("Delete admin success");
-        return "success";
+        return "1";
     }
 
     /*获得所有管理员*/
@@ -86,10 +86,9 @@ public class BussinessController {
         List<Admin> admins = adminService.getAllAdmins();
         if (admins != null) {
             System.out.println("Get all admins success");
-            session.setAttribute("allAdmins", admins);
-            return "success";
+            return JSON.toJSONString(admins);
         }
-        return "error";
+        return "0";
     }
 
     //图表信息操作相关部分-------------------------------------------------------------

@@ -85,19 +85,23 @@
 }
 
 /*侧边栏标题*/
+.sidebar > ul > li:first-of-type {
+    margin-bottom: 15px;
+}
+
 .sidebar > ul > li:first-of-type a {
     height: 50px;
     font-size: 25px;
     line-height: 50px;
     color: white;
-    background-color: #474769;
+    background-color: #2f734e;
     display: block;
     cursor: default;
 }
 
 .sidebar > ul > li:first-of-type a:hover {
     color: white;
-    background-color: #474769;
+    background-color: #2f734e;
 }
 
 /*子菜单项大小*/

@@ -60,6 +60,12 @@ public class PageController {
         return "index_body_addAdmin";
     }
 
+    //加载添加管理员页面
+    @RequestMapping("/index_body_allAdmin")
+    public String index_body_allAdmin() {
+        return "index_body_allAdmin";
+    }
+
     //加载测试页面
     @RequestMapping("/test")
     public String test() {
@@ -79,8 +85,8 @@ public class PageController {
     }
 
     //加载株高和叶绿素图表
-    @RequestMapping("/chart_cornHeightAndChlorophyll")
-    public String chart_cornHeightAndChlorophyll() {
-        return "index_body_chart/chart_cornHeightAndChlorophyll";
+    @RequestMapping("/chart_chAndChl")
+    public String chart_chAndChl() {
+        return "index_body_chart/chart_chAndChl";
     }
 }

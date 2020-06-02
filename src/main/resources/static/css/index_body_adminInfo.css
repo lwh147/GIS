@@ -20,8 +20,7 @@
 
 /*卡片边距*/
 #index-body-adminInfo .card {
-    margin-top: 75px;
-    margin-left: 10px;
+    margin-top: 20px;
 }
 
 /*修改选项的卡片样式类*/
@@ -34,7 +33,7 @@
 }
 
 #index-body-adminInfo .card:hover {
-    margin-top: 70px;
+    margin-top: 15px;
     margin-bottom: 5px;
     box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
