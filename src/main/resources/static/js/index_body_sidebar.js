@@ -35,6 +35,9 @@ function sidebar() {
  * 时间: 2020.5.31
  * 描述: 为导航栏的显示和隐藏添加监听函数
  */
-function addSidebarClickEventHandlerFunction(fn) {
-    document.getElementsByClassName("sidebar")[0].addEventListener("click", fn);
+function addSidebarClickEventHandlerFunction(resize) {
+    document.getElementsByClassName("sidebar")[0].addEventListener("click", function () {
+        setTimeout(resize, 500);
+    });
+    $(window).resize(resize);
 }

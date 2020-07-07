@@ -1,4 +1,4 @@
-package com.gis.entity;
+package com.gis.entity.corn;
 
 public class CornLeaf {
 

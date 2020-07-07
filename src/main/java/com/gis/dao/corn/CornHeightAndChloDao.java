@@ -1,6 +1,6 @@
-package com.gis.dao;
+package com.gis.dao.corn;
 
-import com.gis.entity.CornHeightAndChlo;
+import com.gis.entity.corn.CornHeightAndChlo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

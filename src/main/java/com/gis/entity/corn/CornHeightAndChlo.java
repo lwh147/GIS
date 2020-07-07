@@ -1,4 +1,4 @@
-package com.gis.entity;
+package com.gis.entity.corn;
 
 //玉米株高和叶绿素含量
 public class CornHeightAndChlo {

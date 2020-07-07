@@ -1,6 +1,6 @@
-package com.gis.dao;
+package com.gis.dao.corn;
 
-import com.gis.entity.CornLeaf;
+import com.gis.entity.corn.CornLeaf;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

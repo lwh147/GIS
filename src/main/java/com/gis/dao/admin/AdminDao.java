@@ -1,6 +1,6 @@
-package com.gis.dao;
+package com.gis.dao.admin;
 
-import com.gis.entity.Admin;
+import com.gis.entity.admin.Admin;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

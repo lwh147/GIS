@@ -1,10 +1,10 @@
-package com.gis.entity;
+package com.gis.entity.climatic;
 
 import java.util.Date;
 
 public class ClimaticStation {
 
-    private Integer dataId;//主键
+    private String dataId;//主键
     private Date recordDate;
     private Float airTemperature;
     private Float airHumidity;
@@ -12,11 +12,11 @@ public class ClimaticStation {
     private Float windSpeed;
     private Float rainfall;
 
-    public Integer getDataId() {
+    public String getDataId() {
         return dataId;
     }
 
-    public void setDataId(Integer dataId) {
+    public void setDataId(String dataId) {
         this.dataId = dataId;
     }
 

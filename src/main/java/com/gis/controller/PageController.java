@@ -6,6 +6,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class PageController {
 
+    /*echarts测试*/
+    @RequestMapping("/echarts")
+    public String getEcharts() {
+        return "chartShow";
+    }
+
+    /*地图测试*/
+    @RequestMapping("/map")
+    public String getMap() {
+        return "map";
+    }
+
+    /*小功能测试*/
+    @RequestMapping("/testFunction")
+    public String getTest() {
+        return "testFunction";
+    }
+
+
     //访问项目根目录时转到管理员登陆页面
     @RequestMapping("/")
     public String adminLogin() {
@@ -88,5 +107,53 @@ public class PageController {
     @RequestMapping("/chart_chAndChl")
     public String chart_chAndChl() {
         return "index_body_chart/chart_chAndChl";
+    }
+
+    //加载株高和叶绿素图表
+    @RequestMapping("/chart_lai")
+    public String chart_lai() {
+        return "index_body_chart/chart_lai";
+    }
+
+    //加载株高和叶绿素图表
+    @RequestMapping("/chart_lam")
+    public String chart_lam() {
+        return "index_body_chart/chart_lam";
+    }
+
+    //加载株高和叶绿素图表
+    @RequestMapping("/chart_preAndIrr")
+    public String chart_preAndIrr() {
+        return "index_body_chart/chart_preAndIrr";
+    }
+
+    //加载株高和叶绿素图表
+    @RequestMapping("/chart_sr")
+    public String chart_sr() {
+        return "index_body_chart/chart_sr";
+    }
+
+    //加载株高和叶绿素图表
+    @RequestMapping("/chart_swc")
+    public String chart_swc() {
+        return "index_body_chart/chart_swc";
+    }
+
+    //加载株高和叶绿素图表
+    @RequestMapping("/chart_sws")
+    public String chart_sws() {
+        return "index_body_chart/chart_sws";
+    }
+
+    //加载株高和叶绿素图表
+    @RequestMapping("/chart_vwc")
+    public String chart_vwc() {
+        return "index_body_chart/chart_vwc";
+    }
+
+    //加载株高和叶绿素图表
+    @RequestMapping("/chart_yield")
+    public String chart_yield() {
+        return "index_body_chart/chart_yield";
     }
 }
