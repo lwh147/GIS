@@ -23,7 +23,7 @@ function getUrlParam(paramName) {
 /**
  * 作者: lwh
  * 时间: 2019.12.10
- * 描述: 转换日期格式(时间戳转换为datetime格式yyyy:mm:dd:hh:mm:ss)
+ * 描述: 转换日期格式(时间戳转换为datetime格式yyyy:mm:dd hh:mm:ss)
  */
 function timestampToTime(timestamp) {
     //时间戳为10位(s)需*1000，时间戳为13位(ms)的话不需乘1000，默认时间戳单位为ms
@@ -97,7 +97,7 @@ function getDateWeek(date) {
 /**
  * 作者: lwh
  * 时间: 2020.4.11
- * 描述: 将信息存入session(所给信息为JSON字符串，存储格式也为键值对模式)
+ * 描述: 将信息存入session(所给信息为JSON对象，存储格式也为键值对模式)
  */
 function saveData2Ses(jsonStr) {
     //遍历json数组并进行存储
@@ -112,8 +112,8 @@ function saveData2Ses(jsonStr) {
  * 时间: 2020.4.14
  * 描述: 判断一个指定id的组件是否存在
  */
-function isLoaded(cid) {
-    return $("#" + cid).length !== 0;
+function isLoaded(id) {
+    return $("#" + id).length !== 0;
 }
 
 
@@ -122,11 +122,11 @@ function isLoaded(cid) {
  * 时间: 2020.4.28
  * 描述: 自定义提示框
  */
-function myAlert(url, cid, message) {
+function myAlert(message) {
     //判断是否已经加载提示框modal
-    if (!isLoaded(cid)) {
+    if (!isLoaded("alert")) {
         $.ajax({
-            url: url,
+            url: "alert",
             type: "get",
             async: false,
             dataType: "html",
@@ -142,4 +142,87 @@ function myAlert(url, cid, message) {
     $("#alert").modal();
     //更改提示信息
     $("#alert-message").text(message);
+}
+
+
+/**
+ * 作者: lwh
+ * 时间: 2020.2.26
+ * 描述: 设置或者删除cookie
+ */
+function setCookie(cname, cvalue, exhours) {
+    /* ----------Cookie属性项说明----------
+     * NAME=VALUE	键值对，可以设置要保存的 Key/Value，注意这里的 NAME 不能和其他属性项的名字一样
+     * Expires	    过期时间，在设置的某个时间点(ms)后该 Cookie 就会失效（不指定该属性值或者属性值
+     *              小于0时，cookie生命周期为会话周期；指定为0时，cookie无效，代表立即删除该cookie）
+     * Domain	    生成该 Cookie 的域名，如 domain="www.baidu.com"
+     * Path	        该 Cookie 是在当前的哪个路径下生成的，如 path=/wp-admin/
+     * Secure	    如果设置了这个属性，那么只会在 SSH 连接时才会回传该 Cookie
+     */
+    let cookieStr = cname + "=" + cvalue;
+    //当hours>0时，该cookie存在指定时间；等于0时代表立即删除该cookie；小于0时该cookie会存在至会话结束
+    if (exhours === 0) {
+        cookieStr += "; expires=0";
+    } else if (exhours < 0) {
+        cookieStr += "; expires=-1";
+    } else {
+        //设置到期时间
+        let expires = new Date();
+        expires.setTime(expires.getTime() + exhours * 60 * 60 * 1000);
+        cookieStr += "; expires=" + expires.toUTCString();
+    }
+    //设置cookie
+    document.cookie = cookieStr;
+}
+
+/**
+ * 作者: lwh
+ * 时间: 2020.2.26
+ * 描述: 获取指定名称的cookie的value值,失败返回null
+ */
+function getCookie(cname) {
+    //读取cookie时cookie的字符串结构为“name1=value1; name2=value2”
+    let reg = new RegExp("(^| )" + cname + "=([^;]*)(;|$)");
+    let cookieStr = document.cookie;
+    if (cookieStr !== "") {
+        let arr = cookieStr.match(reg);
+        if (arr[2] !== "") {
+            return arr[2];
+        }
+    }
+    return null;
+}
+
+/**
+ * 作者: lwh
+ * 时间: 2020.7.8
+ * 描述: 加载组件，在组建已经加载的情况下不会重复加载
+ * cinfo:json对象，例:
+ * c0 = {
+        cname: "导航栏",            //组件名称
+        cid: "index-navbar",       //组件id
+        curl: "index_navbar",      //组件请求url
+        cinit: "index_navbar_init()"  //组件初始化函数
+    }
+ */
+function loadSingleComponent(cinfo, target) {
+    //判断是否已经加载
+    if (!isLoaded(cinfo.cid)){
+        //获取
+        $.ajax({
+            url: cinfo.curl,
+            type: "get",
+            async: false,
+            dataType: "html",
+            success: function (data) {
+                //加载到目标标签下
+                $(target).append(data);
+                //初始化组件
+                eval(cinfo.cinit);
+            },
+            error: function (error) {
+                alert("----ajax请求加载" + cinfo.cname + "出错！错误信息如下：----\n" + error.responseText);
+            }
+        });
+    }
 }

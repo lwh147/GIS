@@ -61,10 +61,10 @@ let chart_components = {
  * 时间: 2020.5.20
  * 描述: 图表展示主页初始化
  */
-function indexBodyChartInit() {
+function index_body_chart_init() {
     //加载侧边导航栏
     loadSidebar();
-    //注册监听函数
+    //注册侧边栏监听函数
     registListenerForSidebar();
     //展示图标首页
     loadChartIndex();
@@ -103,68 +103,7 @@ function loadSidebar() {
 function loadChartIndex() {
     //遍历组件列表加载所有组件
     $.each(chart_components, function (key, value) {
-        $.ajax({
-            url: value.curl,
-            type: "get",
-            async: true,
-            dataType: "html",
-            success: function (data) {
-                $("#index-body-chart #index-body-chart-container").append(data);
-                //初始化该组件
-                eval(value.cinit);
-            },
-            error: function (error) {
-                alert("----ajax请求加载" + value.cname + "执行出错！错误信息如下：----\n" + error.responseText);
-            }
-        });
-    });
-}
-
-/**
- * 作者: lwh
- * 时间: 2020.7.7
- * 描述: 侧边导航栏点击监听处理函数
- */
-function registListenerForSidebar() {
-    let li = $("#index-body-chart #index-body-sidebar ul li ul li");
-    $.each(li, function (key, value) {
-        $(value).click(function () {
-            loadSingleChart($(value).children().text());
-        });
-    });
-}
-
-/**
- * 作者: lwh
- * 时间: 2020.7.7
- * 描述: 侧边导航栏点击监听处理函数
- */
-function loadSingleChart(cname) {
-    //根据名称查找图标并加载
-    $.each(chart_components, function (key, value) {
-        //名称相同
-        if (value.cname === cname) {
-            //清空图表显示区域
-            $("#index-body-chart #index-body-chart-container").empty();
-            //加载对应图表
-            $.ajax({
-                url: value.curl,
-                type: "get",
-                async: true,
-                dataType: "html",
-                success: function (data) {
-                    $("#index-body-chart #index-body-chart-container").append(data);
-                    //初始化该组件
-                    eval(value.cinit);
-                },
-                error: function (error) {
-                    alert("----ajax请求加载" + value.cname + "执行出错！错误信息如下：----\n" + error.responseText);
-                }
-            });
-            //return false;——跳出所有循环；相当于 javascript 中的 break 效果。
-            //return true;——跳出当前循环，进入下一个循环；相当于 javascript 中的 continue 效果
-            return false;
-        }
+        loadSingleComponent(value, "#index-body-chart #index-body-chart-container");
     });
 }
 
@@ -1176,6 +1115,7 @@ function screenDataByAttr(chartData, attrName, attrValue) {
     //attrValue传递进来的是String要转换为Number
     let result = [];
     $.each(chartData, function (key, value) {
+        //value[attrName]和attrValue的数据类型不能确定，所以不能用全等----------------
         if (value[attrName] == attrValue)
             result.push(value);
     });
