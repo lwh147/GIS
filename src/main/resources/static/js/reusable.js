@@ -4,7 +4,6 @@
  * 描述: 一些比较常用的函数，需要引入jquery
  */
 
-
 /**
  * 作者: lwh
  * 时间: 2019.12.10
@@ -103,7 +102,11 @@ function saveData2Ses(jsonStr) {
     //遍历json数组并进行存储
     $.each(jsonStr, function (key, value) {
         //将键值对存入sessionStorage
-        window.sessionStorage.setItem(key, value);
+        if (value instanceof Object)
+            window.sessionStorage.setItem(key, JSON.stringify(value));
+        else
+            //将键值对存入sessionStorage
+            window.sessionStorage.setItem(key, value);
     });
 }
 
@@ -186,6 +189,8 @@ function getCookie(cname) {
     let cookieStr = document.cookie;
     if (cookieStr !== "") {
         let arr = cookieStr.match(reg);
+        if (arr === null)
+            return null;
         if (arr[2] !== "") {
             return arr[2];
         }
@@ -207,7 +212,7 @@ function getCookie(cname) {
  */
 function loadSingleComponent(cinfo, target) {
     //判断是否已经加载
-    if (!isLoaded(cinfo.cid)){
+    if (!isLoaded(cinfo.cid)) {
         //获取
         $.ajax({
             url: cinfo.curl,
@@ -225,4 +230,166 @@ function loadSingleComponent(cinfo, target) {
             }
         });
     }
+}
+
+/**
+ * 作者: SilentSherlock
+ * 描述：提取JSON对象数组中的某一列数据
+ */
+function extractCol(chartData, colName) {
+    let colData = [];
+    $.each(chartData, function (key, value) {
+        //hasOwnProperty(propertyName) 判断json对象是否有某个属性
+        if (value.hasOwnProperty(colName))
+            //往json对象数组中添加json对象
+            colData.push(value[colName]);
+    });
+    return colData;
+}
+
+/**
+ * 作者: SilentSherlock
+ * 描述：从JSON对象数组中根据某个属性值筛选部分对象
+ */
+function screenDataByAttr(chartData, attrName, attrValue) {
+    //attrValue传递进来的是String要转换为Number
+    let result = [];
+    $.each(chartData, function (key, value) {
+        //value[attrName]和attrValue的数据类型不能确定，所以不能用全等----------------
+        if (value[attrName] == attrValue)
+            result.push(value);
+    });
+    return result;
+}
+
+/**
+ * 作者: SilentSherlock
+ * 描述：初始化图表节点
+ */
+function getAndInitChart(chartDomId, theme) {
+    theme = theme || "purple";
+
+    let chartDom = document.getElementById(chartDomId);
+    return echarts.init(chartDom, theme)
+}
+
+
+/**
+ * 作者: SilentSherlock
+ * 描述：向后台发送请求获取数据,默认带请求数据
+ */
+function getChartData(requestUrl, jsonStr, flag) {
+    flag = flag || 1;
+
+    let chartData = null;
+
+    const tmpData = window.sessionStorage.getItem(requestUrl + jsonStr);
+    if (tmpData != null) {
+        chartData = JSON.parse(tmpData);
+        return chartData;
+    }
+    if (requestUrl != null) {
+        //图表数据获取成功回调函数
+        function callback(data) {
+            if (data === "0")
+                alert("获取图表数据失败");
+            else {
+                chartData = data;
+                const dataStr = JSON.stringify(chartData);
+                //console.log(dataStr);
+                window.sessionStorage.setItem(requestUrl + jsonStr, dataStr);
+            }
+        }
+
+        //根据请求类别发送请求
+        if (flag === 1) {
+            $.ajax({
+                url: requestUrl,
+                type: "post",
+                data: jsonStr,
+                async: false,
+                contentType: "application/json;charset=UTF-8",
+                dataType: "json",   //dataType为json时得到的数据格式为json对象，但是后端发送数据时需发送json字符串
+                success: callback,
+                error: function (error) {
+                    alert("----ajax请求获取图表数据失败！错误信息如下：----\n" + error.responseText);
+                }
+            });
+        } else if (flag === 0) {
+            $.ajax({
+                url: requestUrl,
+                type: "get",
+                async: false,
+                dataType: "json",
+                success: callback,
+                error: function (error) {
+                    alert("----ajax请求获取图表数据失败！错误信息如下：----\n" + error.responseText);
+                }
+            });
+        } else
+            alert("图表数据请求类型出错");
+    } else
+        alert("图表数据请求url不能为空");
+
+    return chartData;
+}
+
+/**
+ * 作者: SilentSherlock
+ * 描述：向后台发送请求获取数据,默认带请求数据,首次获取数据之后会暂时保存在前端
+ */
+function getChartDataByCache(requestUrl, jsonStr, flag) {
+    flag = flag || 1;
+
+    let chartData = null;
+
+    const tmpData = window.sessionStorage.getItem(requestUrl + jsonStr);
+    if (tmpData != null) {
+        chartData = JSON.parse(tmpData);
+        return chartData;
+    }
+    if (requestUrl != null) {
+        //图表数据获取成功回调函数
+        function callback(data) {
+            if (data === "0")
+                alert("获取图表数据失败");
+            else {
+                chartData = data;
+                const dataStr = JSON.stringify(chartData);
+                //console.log(dataStr);
+                window.sessionStorage.setItem(requestUrl + jsonStr, dataStr);
+            }
+        }
+
+        //根据请求类别发送请求
+        if (flag === 1) {
+            $.ajax({
+                url: requestUrl,
+                type: "post",
+                data: jsonStr,
+                async: false,
+                contentType: "application/json;charset=UTF-8",
+                dataType: "json",   //dataType为json时得到的数据格式为json对象，但是后端发送数据时需发送json字符串
+                success: callback,
+                error: function (error) {
+                    alert("----ajax请求获取图表数据失败！错误信息如下：----\n" + error.responseText);
+                }
+            });
+        } else if (flag === 0) {
+            $.ajax({
+                url: requestUrl,
+                type: "get",
+                async: false,
+                dataType: "json",
+                success: callback,
+                error: function (error) {
+                    alert("----ajax请求获取图表数据失败！错误信息如下：----\n" + error.responseText);
+                }
+            });
+        } else
+            alert("图表数据请求类型出错");
+    } else
+        alert("图表数据请求url不能为空");
+
+    return chartData;
 }

@@ -1,11 +1,12 @@
 package com.gis.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.gis.service.ClimaticService;
 import com.gis.service.CornService;
 import com.gis.service.FieldService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ResourceUtils;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,11 +16,11 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.URLEncoder;
+import java.util.Objects;
 
 /*数据文件上传下载相关功能*/
 @Controller
 public class FileController {
-
     @Resource
     private CornService cornService;
     @Resource
@@ -27,17 +28,50 @@ public class FileController {
     @Resource
     private ClimaticService climaticService;
 
+    @RequestMapping("dataUpload")
+    @ResponseBody
+    public String dataUpload(@Param("uploadFile") MultipartFile uploadFile) throws Exception {
+        //判断文件是否为空
+        if (uploadFile.getName().equals("") || uploadFile.getSize() <= 0)
+            return JSON.toJSONString("0");
+
+        //获取文件保存url,注意不是windows下文件路径
+        String savePath = ResourceUtils.getURL("classpath:").getPath() + "static/src/file/dataFile/";
+        File file = multipartFiletoFile(uploadFile);
+
+        //保存文件
+        String result = "0";
+        if (saveFile(savePath, file))
+            result = "1";
+        else
+            result = "0";
+
+        //根据上传的数据文件更新
+        if (addToDatabaseByFile(file.getName()))
+            System.out.println("更新数据成功");
+        else
+            System.out.println("更新数据失败");
+
+        //file是在项目根目录下临时生成的文件，需要删除
+        if (file.delete())
+            System.out.println("临时文件已删除");
+        else
+            System.out.println("临时文件删除失败");
+
+        return JSON.toJSONString(result);
+    }
+
     /*
-    * 上传中一直存在的问题
-    * 1.第一次上传成功后，再上传不能覆盖原来文件，会报错(已解决)
-    * 2.写入数据库时，如写入1000条数据，写入500条时数据格式出错，事务不会回滚，导致再次重写时会报错主键重复
-    * 此问题在于写入多条数据时，是一条一条插入，并不是一次插入，计划可以在发生错误时，执行一次删除操作，达到回滚的效果*/
+     * 上传中一直存在的问题
+     * 1.第一次上传成功后，再上传不能覆盖原来文件，会报错(已解决)
+     * 2.写入数据库时，如写入1000条数据，写入500条时数据格式出错，事务不会回滚，导致再次重写时会报错主键重复
+     * 此问题在于写入多条数据时，是一条一条插入，并不是一次插入，计划可以在发生错误时，执行一次删除操作，达到回滚的效果*/
     /*上传模板文件并保存*/
     @RequestMapping("/templateUpload")
     @ResponseBody
     public String templateUpload(@RequestParam("template") MultipartFile file) throws IOException {
-        String path = ResourceUtils.getURL("classpath:").getPath() + "static/file/fileTemplates/";
-        fileUpload(path, file);
+        String path = ResourceUtils.getURL("classpath:").getPath() + "static/src/file/fileTemplates/";
+        //saveFile(path, file);
         return "success";
     }
 
@@ -46,10 +80,10 @@ public class FileController {
     public void templateDownload(HttpServletResponse httpServletResponse, String fileName) throws IOException {
 
         //String fileName = "template.xlsx";//根据前端的需求选择下载哪个模板文件
-        String path = ResourceUtils.getURL("classpath:").getPath() + "static/file/fileTemplates/";
+        String path = ResourceUtils.getURL("classpath:").getPath() + "static/src/file/fileTemplates/";
 
         File templates = new File(path);
-        if (!templates.exists()){
+        if (!templates.exists()) {
             templates.mkdirs();
         }
 
@@ -68,9 +102,9 @@ public class FileController {
         OutputStream outputStream = httpServletResponse.getOutputStream();
         byte[] buff = new byte[10000];
         int i = 0;
-        while (i != -1){
+        while (i != -1) {
             i = bufferedInputStream.read(buff);
-            if (i != -1){
+            if (i != -1) {
                 outputStream.write(buff, 0, i);
             }
         }
@@ -78,92 +112,126 @@ public class FileController {
         outputStream.flush();
         outputStream.close();
     }
+
     /*上传数据文件*/
     @RequestMapping(value = "/dataFileUpload")
     @ResponseBody
     public String dataFileUpload(@RequestParam("dataFile") MultipartFile multipartFile) throws IOException {
-        String path = ResourceUtils.getURL("classpath:").getPath() + "static/file/dataFile/";
-        fileUpload(path, multipartFile);
+        String path = ResourceUtils.getURL("classpath:").getPath() + "static/src/file/dataFile/";
+        //saveFile(path, multipartFile);
         return "success";
     }
+
     /*保存上传的数据文件到数据库
-    * 前端提供要保持的是哪个文件
-    * 对应调取service中的方法
-    * */
-    @RequestMapping("/addToDatabaseByFile")
-    @ResponseBody
-    public String addToDatabaseByFile(@RequestBody String dataFileName) throws Exception {
-        String path = ResourceUtils.getURL("classpath:").getPath() + "static/file/dataFile/";
+     * 前端提供要保持的是哪个文件
+     * 对应调取service中的方法
+     * */
+    public boolean addToDatabaseByFile(String dataFileName) throws Exception {
+        String path = ResourceUtils.getURL("classpath:").getPath() + "static/src/file/dataFile/";
         String dataPath = path + dataFileName;
-        if (dataFileName!=null){
+        if (dataFileName != null) {
             switch (dataFileName) {
-                case "产量_R.xlsx":
+                case "yield.xlsx":
                     if (cornService.saveCornYieldByFile(dataPath)) {
                         System.out.println("Add To Corn Yield Database By File Success");
                     }
                     break;
-                case "叶面积仪数据统计_R.xlsx":
+                case "lam.xlsx":
                     if (cornService.saveCornLeafByFile(dataPath)) {
                         System.out.println("Add To Corn Leaf Database By File Success");
                     }
                     break;
-                case "株高和叶绿素_R.xlsx":
+                case "chAndChl.xlsx":
                     if (cornService.saveCornHeightAndChloByFile(dataPath)) {
                         System.out.println("Add To Corn Height And Chlo Database By File Success");
                     }
                     break;
-                case "LAI_R.xlsx":
+                case "lai.xlsx":
                     if (cornService.saveCornLAIByFile(dataPath)) {
                         System.out.println("Add To Corn LAI Database By File Success");
                     }
                     break;
-                case "SWC_R.xlsx":
+                case "swc.xlsx":
                     if (fieldService.saveSWCByFile(dataPath)) {
                         System.out.println("Add To SWC Database By File Success");
                     }
                     break;
-                case "田间持水量_R.xlsx":
+                case "vwc.xlsx":
                     if (fieldService.saveFieldWaterHoldByFile(dataPath)) {
                         System.out.println("Add To FieldWaterHold Database By File Success");
                     }
                     break;
-                case "标准气象站_R.xlsx":
+                case "sws.xlsx":
                     if (climaticService.saveClimaticStationByFile(dataPath)) {
                         System.out.println("Add To ClimaticStation Database By File Success");
                     }
                     break;
-                case "降雨量+灌溉量_R.xlsx":
+                case "preAndIrr.xlsx":
                     if (climaticService.saveFieldPAIByFile(dataPath)) {
                         System.out.println("Add To FieldPAI Database By File Success");
                     }
                     break;
                 default:
-                    throw new Exception("Can't Find File With Name ---- "+ dataFileName);
+                    throw new Exception("Can't Find File With Name ---- " + dataFileName);
             }
-            return "success";
+            return true;
         }
-        return "failed";
+        return false;
     }
 
 
     @RequestMapping("/addToDatabase")
     @ResponseBody
-    public String addToDatabase(){
+    public String addToDatabase() {
         return "success";
     }
 
-    public void fileUpload(String filePath, MultipartFile multipartFile) throws IOException {
+    public File multipartFiletoFile(MultipartFile multipartFile) throws IOException {
 
-        /*先进入到文件夹,文件夹不存在就创建*/
-        File test = new File(filePath);
-        if (!test.exists()){
-            test.mkdirs();
-        }
-        /*如果文件存在,先删除再保存*/
-        File uploadFilePath = new File(filePath + multipartFile.getOriginalFilename());
-        if (uploadFilePath.exists()){
-            uploadFilePath.delete();
-        }
-        multipartFile.transferTo(uploadFilePath);
+        File file = new File(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+
+        InputStream inputStream = multipartFile.getInputStream();
+        OutputStream outputStream = new FileOutputStream(file);
+
+        int byteRead = 0;
+        byte[] buffer = new byte[4096];
+
+        while ((byteRead = inputStream.read(buffer, 0, 4096)) != -1)
+            outputStream.write(buffer, 0, byteRead);
+
+        outputStream.close();
+        inputStream.close();
+
+        return file;
+    }
+
+    public boolean saveFile(String savePath, File file) throws IOException {
+        //如果目标文件所在的文件夹未被创建，则需要先创建文件夹再创建文件。
+        File targetDir = new File(savePath);
+
+        //是否创建文件夹
+        if (!targetDir.exists())
+            return !targetDir.mkdirs();
+
+        //创建文件
+        File sfile = new File(savePath + file.getName());
+        //覆盖旧文件
+        if (sfile.createNewFile())
+            return false;
+
+        InputStream inputStream = new FileInputStream(file);
+        OutputStream outputStream = new FileOutputStream(sfile);
+
+        int byteRead = 0;
+        byte[] buffer = new byte[4096];
+
+        while ((byteRead = inputStream.read(buffer, 0, 4096)) != -1)
+            outputStream.write(buffer, 0, byteRead);
+
+        outputStream.flush();
+        outputStream.close();
+        inputStream.close();
+
+        return true;
     }
 }

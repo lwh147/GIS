@@ -53,7 +53,7 @@ function navbarTabListenerRegist() {
             return;
         //更改网页标题
         let cname = $(this).children().text();
-        $("title").text( cname+ "—玉米的生长及环境数据管理系统");
+        $("title").text(cname + "—玉米的生长及环境数据管理系统");
         //取消当前激活菜单项
         navbar_navul.children("li.active").removeClass("active");
         //如果菜单项数等于4则要进行删除
@@ -64,13 +64,16 @@ function navbarTabListenerRegist() {
         $(this).addClass("active");
         //根据名称查找组件并加载
         findComponentInfoAndLoad(cname);
+
+        //如果导航栏在小屏幕下，点击选项卡之后关闭下拉状态
+        closeStatuIn();
     });
 
     //导航栏管理员信息操作标签
     $("#index-navbar ul.dropdown-menu:eq(0) li.needComponent").click(function () {
         //更改网页标题(去除空格)
         let cname = $(this).children().text().replace(/\s/g, "");
-        $("title").text( cname+ "—玉米的生长及环境数据管理系统");
+        $("title").text(cname + "—玉米的生长及环境数据管理系统");
         //取消当前激活的菜单项
         navbar_navul.children("li.active").removeClass("active");
         //如果菜单项数等于4则要进行删除
@@ -82,6 +85,9 @@ function navbarTabListenerRegist() {
         navbar_navul.append(html);
         //根据名称查找组件并加载
         findComponentInfoAndLoad(cname);
+
+        //如果导航栏在小屏幕下，点击选项卡之后关闭下拉状态
+        closeStatuIn();
     });
 
     function findComponentInfoAndLoad(cname) {
@@ -91,6 +97,8 @@ function navbarTabListenerRegist() {
             if (value.cname === cname) {
                 //清空主体区域
                 $("#index-body-container").empty();
+                //清空可能由组件模块生成的多余dom节点
+                $("body style").remove();
                 //加载对应组件
                 loadSingleComponent(value, "#index-body-container");
                 //更新当前用户所处界面
@@ -104,6 +112,14 @@ function navbarTabListenerRegist() {
             i++;
         });
     }
+    
+    function closeStatuIn() {
+        //如果导航栏在小屏幕下，点击选项卡之后关闭下拉状态
+        let littlebutton = $("#index-navbar .navbar-header button:eq(0)");
+        if ($(littlebutton).css("display") === "block") {
+            $(littlebutton).trigger("click");
+        }
+    }
 }
 
 /**
@@ -112,5 +128,5 @@ function navbarTabListenerRegist() {
  * 描述: 退出登录
  */
 function logout() {
-    $(window).attr("location", "/gis");
+    $(window).attr("location", "/");
 }

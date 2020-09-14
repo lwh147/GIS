@@ -6,7 +6,7 @@ import com.gis.entity.corn.CornHeightAndChlo;
 import com.gis.entity.corn.CornLAI;
 import com.gis.entity.corn.CornLeaf;
 import com.gis.entity.corn.CornYield;
-import com.gis.function.Tools;
+import com.gis.util.Tools;
 import com.gis.service.CornService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

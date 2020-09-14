@@ -1,0 +1,70 @@
+<div class="container mypanel" id="index-body-file" xmlns:th="http://www.thymeleaf.org">
+    <!--
+     作者: lwh
+     时间: 2020.7.20
+     描述：上传/下载数据
+    -->
+    <div class="mypanel-header">
+        <div class="media">
+            <div class="media-left">
+                <img src="../static/src/file.png" th:src="@{/src/file.png}" alt="上传/下载">
+            </div>
+            <div class="media-right">
+                <h2 class="media-heading">上传/下载数据</h2>
+            </div>
+        </div>
+    </div>
+    <div class="mypanel-title-content-split"></div>
+    <div class="mypanel-content">
+        <div class="row">
+            <div class="col-lg-offset-3 col-lg-6">
+                <form class="form-horizontal" id="file-form">
+                    <fieldset>
+                        <legend>下载模板—下载所需数据类型的数据模板</legend>
+                        <div class="form-group">
+                            <label for="templateSelect" class="control-label col-sm-4">请选择要下载的模板:</label>
+                            <div class="col-sm-5">
+                                <select class="form-control ipt-dark" id="templateSelect" name="templateSelect">
+                                    <option value="yield">产量</option>
+                                    <option value="lam">叶面积仪数据</option>
+                                    <option value="chAndChl">株高和叶绿素</option>
+                                    <option value="lai">叶面积指数</option>
+                                    <option value="swc">土壤含水量</option>
+                                    <option value="vwc">体积含水量</option>
+                                    <option value="sws">标准气象站</option>
+                                    <option value="preAndIrr">降雨量和灌溉量</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-3">
+                                <button type="button" class="btn btn-main" data-loading-text="正在下载...">
+                                    下载
+                                </button>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>上传数据—模板文件中录入数据后上传</legend>
+                        <div class="form-group">
+                            <label for="uploadFile" class="control-label col-sm-3">请选择文件:</label>
+                            <div class="col-sm-5">
+                                <input type="file" class="form-control ipt-dark" id="uploadFile" name="uploadFile"
+                                       placeholder="请选择文件..." accept=".xlsx">
+                            </div>
+                            <div class="col-sm-4">
+                                <button type="button" class="btn btn-main" data-loading-text="正在上传...">
+                                    上传
+                                </button>
+                            </div>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="45"
+                                 aria-valuemin="0" aria-valuemax="100" style="width: 0; min-width: 2em;">
+                                0%
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

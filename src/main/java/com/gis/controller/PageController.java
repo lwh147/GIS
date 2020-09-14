@@ -162,4 +162,10 @@ public class PageController {
     public String index_body_map() {
         return "index_body_map";
     }
+
+    //加载地图主页
+    @RequestMapping("/index_body_file")
+    public String index_body_file() {
+        return "index_body_file";
+    }
 }

@@ -1,20 +1,3 @@
-//模态框的加载以系统组件为单位，同一组件的模态框同时加载和删除
-//该系统组件用到的所有模态框请求url
-let adminInfoModalsUrl = "index_body_adminInfo_modal";
-//存储用户信息管理页面所有模态框的加载函数和名称、模态框id、初始化函数
-let adminInfoModals = {
-    m0: {
-        mn: "修改密码模态框",                     //模态框名称
-        mid: "adminInfo-resetPassword-modal",    //模态框id
-        minit: "adminInfoModal0init()",          //初始化函数
-    },
-    m1: {
-        mn: "修改邮箱模态框",
-        mid: "adminInfo-resetEmail-modal",
-        minit: "adminInfoModal1init()"
-    }
-};
-
 /**
  * 作者: lwh
  * 时间: 2020.4.12

@@ -1,16 +1,68 @@
-<div class="container-fluid" id="index-body-index">
+<div id="index-body-index">
     <!--
      作者: lwh
      时间: 2020.4.24
      描述：首页
     -->
-    <div class="row">
-        <div id="index-sceneContainer" style="
-        background-image: url('./src/adminLogin_bg.jpg');
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-        min-height: 700px"></div>
+    <!--信息窗口-->
+    <div class="fixed-info">
+        <div class="info-tip">
+            <div class="hamburger" id="hamburger-1">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+        </div>
+        <div class="info-window">
+            <!--地块信息-->
+            <div class="info-window-block">
+                <ul class="info-window-block-header">
+                    <h3 class="info-window-block-header-title" title="地块信息">地块信息</h3>
+                </ul>
+                <div id="info-win-chart1">
+                    <table class="table table-bordered">
+                        <tbody>
+                        <tr>
+                            <td title="地块编号">地块编号</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td title="经纬度">经纬度</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td title="面积(M²)">面积(M²)</td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--土壤含水量-->
+            <div class="info-window-block">
+                <ul class="nav nav-tabs info-window-block-header">
+                    <li><h3 title="土壤含水量">SWC</h3></li>
+                    <li class="navbar-right"><a href="javascript:void(0)">more</a></li>
+                </ul>
+                <div class="info-window-block-chart" id="info-win-chart2"></div>
+            </div>
+            <!--田间持水量-->
+            <div>
+                <div class="info-window-block">
+                    <ul class="nav nav-tabs info-window-block-header">
+                        <li><h3 title="田间持水量">FWH</h3></li>
+                        <li class="navbar-right"><a href="javascript:void(0)">more</a></li>
+                    </ul>
+                    <div>
+                        <div class="info-window-block-chart" id="info-win-chart3"></div>
+                    </div>
+                </div>
+                <div class="info-window-block">
+                    <div class="info-window-block-chart" id="info-win-chart4"></div>
+                </div>
+            </div>
+
+        </div>
     </div>
+    <div id="testMap"></div>
 </div>

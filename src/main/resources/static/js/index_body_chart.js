@@ -1,61 +1,3 @@
-//所有图表组件
-let chart_components = {
-    c1: {
-        cname: "株高和叶绿素",
-        cid: "chart-chAndChl",
-        curl: "chart_chAndChl",
-        cinit: "chart_chAndChl_init()"
-    },
-    c2: {
-        cname: "体积含水量",
-        cid: "chart-vwc",
-        curl: "chart_vwc",
-        cinit: "chart_vwc_init()"
-    },
-    c3: {
-        cname: "叶面积指数",
-        cid: "chart-lai",
-        curl: "chart_lai",
-        cinit: "chart_lai_init()"
-    },
-    c4: {
-        cname: "叶面积仪数据",
-        cid: "chart-lam",
-        curl: "chart_lam",
-        cinit: "chart_lam_init()"
-    },
-    c5: {
-        cname: "降雨量和灌溉量",
-        cid: "chart-preAndIrr",
-        curl: "chart_preAndIrr",
-        cinit: "chart_preAndIrr_init()"
-    },
-    c6: {
-        cname: "气孔阻力",
-        cid: "chart-sr",
-        curl: "chart_sr",
-        cinit: "chart_sr_init()"
-    },
-    c7: {
-        cname: "土壤含水量",
-        cid: "chart-swc",
-        curl: "chart_swc",
-        cinit: "chart_swc_init()"
-    },
-    c8: {
-        cname: "标准气象站",
-        cid: "chart-sws",
-        curl: "chart_sws",
-        cinit: "chart_sws_init()"
-    },
-    c9: {
-        cname: "产量",
-        cid: "chart-yield",
-        curl: "chart_yield",
-        cinit: "chart_yield_init()"
-    }
-};
-
 /**
  * 作者: lwh
  * 时间: 2020.5.20
@@ -139,7 +81,10 @@ function chart_chAndChl_init() {
  * 函数根据DOY属性一次获得多条数据
  * 画图时则根据TRT属性,确定一个扇形地块,分为三部分,画三个图
  */
-function chart_chAndChl_generate(DOY = "177", TRT = "1") {
+function chart_chAndChl_generate(DOY, TRT) {
+    DOY = DOY || "177";
+    TRT = TRT || "1";
+
     //从后端取数据
     let chartData = getChartData("corn/cornHeightAndChloDOY", JSON.stringify({DOY: DOY}), 1);
 
@@ -241,6 +186,7 @@ function chart_chAndChl_generate(DOY = "177", TRT = "1") {
         cornHandChChart2.resize();
         cornHandChChart3.resize();
     }
+
     //隐藏/展开侧边栏的监听函数注册
     addSidebarClickEventHandlerFunction(resize);
 }
@@ -273,7 +219,9 @@ function chart_lam_init() {
  * 作者: SilentSherlock
  * 描述：画玉米叶面积仪相关数据
  */
-function chart_lam_generate(DOY = "177") {
+function chart_lam_generate(DOY) {
+    DOY = DOY || "177";
+
     //从后端取数据
     let chartData = getChartData("corn/cornLeafDOY", JSON.stringify({DOY: DOY}), 1);
 
@@ -339,7 +287,7 @@ function chart_yield_init() {
  * 作者: SilentSherlock
  * 描述：画玉米产量相关数据
  */
-function chart_yield_generate(DOY = "177") {
+function chart_yield_generate() {
     //从后端取数据
     let chartData = getChartData("corn/cornYield", null, 0);
 
@@ -445,7 +393,9 @@ function chart_vwc_init() {
  * 时间: 2020.7.6
  * 描述: 体积含水量图表绘制
  */
-function chart_vwc_generate(TRT = "1") {
+function chart_vwc_generate(TRT) {
+    TRT = TRT || "1";
+
     //从后端取数据
     let chartData = getChartData("field/fwh", null, 0);
 
@@ -617,7 +567,10 @@ function chart_lai_init() {
  * 时间: 2020.7.6
  * 描述: 体积含水量图表绘制
  */
-function chart_lai_generate(DOY = "177", TRT = "1") {
+function chart_lai_generate(DOY, TRT) {
+    DOY = DOY || "177";
+    TRT = TRT || "1";
+
     //从后端取数据
     let chartData = getChartData("corn/cornLAIDOY", JSON.stringify({DOY: DOY}), 1);
 
@@ -740,7 +693,9 @@ function chart_preAndIrr_init() {
  * 时间: 2020.7.7
  * 描述: 降雨量和灌溉量图表绘制
  */
-function chart_preAndIrr_generate(TRT = "1") {
+function chart_preAndIrr_generate(TRT) {
+    TRT = TRT || "1";
+
     //从后端取数据
     let chartData = getChartData("climatic/fieldpai", null, 0);
     //获取指定样区的数据
@@ -823,7 +778,10 @@ function chart_swc_init() {
  * 时间: 2020.7.7
  * 描述: 土壤含水量图表初绘制
  */
-function chart_swc_generate(DOY = "177", TRT = "1") {
+function chart_swc_generate(DOY, TRT) {
+    DOY = DOY || "177";
+    TRT = TRT || "1";
+
     //从后端取数据
     let chartData = getChartData("field/swc", null, 0);
 
@@ -946,7 +904,9 @@ function chart_sws_init() {
  * 时间: 2020.7.7
  * 描述: 标准气象站图表绘制
  */
-function chart_sws_generate(Date = "2018-06-23") {
+function chart_sws_generate(Date) {
+    Date = Date || "2018-06-23";
+
     //从后端取数据
     let chartData = getChartData("climatic/station", null, 0);
 
@@ -1048,7 +1008,9 @@ function chart_sr_generate() {
  * 作者: SilentSherlock
  * 描述：向后台发送请求获取数据,默认带请求数据
  */
-function getChartData(requestUrl, jsonStr, flag = 1) {
+function getChartData(requestUrl, jsonStr, flag) {
+    flag = flag || 1;
+
     let chartData = null;
     if (requestUrl != null) {
         //图表数据获取成功回调函数
@@ -1090,43 +1052,4 @@ function getChartData(requestUrl, jsonStr, flag = 1) {
         alert("图表数据请求url不能为空");
 
     return chartData;
-}
-
-/**
- * 作者: SilentSherlock
- * 描述：提取JSON对象数组中的某一列数据
- */
-function extractCol(chartData, colName) {
-    let colData = [];
-    $.each(chartData, function (key, value) {
-        //hasOwnProperty(propertyName) 判断json对象是否有某个属性
-        if (value.hasOwnProperty(colName))
-            //往json对象数组中添加json对象
-            colData.push(value[colName]);
-    });
-    return colData;
-}
-
-/**
- * 作者: SilentSherlock
- * 描述：从JSON对象数组中根据某个属性值筛选部分对象
- */
-function screenDataByAttr(chartData, attrName, attrValue) {
-    //attrValue传递进来的是String要转换为Number
-    let result = [];
-    $.each(chartData, function (key, value) {
-        //value[attrName]和attrValue的数据类型不能确定，所以不能用全等----------------
-        if (value[attrName] == attrValue)
-            result.push(value);
-    });
-    return result;
-}
-
-/**
- * 作者: SilentSherlock
- * 描述：初始化图表节点
- */
-function getAndInitChart(chartDomId, theme = "purple") {
-    let chartDom = document.getElementById(chartDomId);
-    return echarts.init(chartDom, theme)
 }

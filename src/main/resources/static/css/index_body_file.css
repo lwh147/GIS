@@ -1,0 +1,22 @@
+/**
+ * 作者: lwh
+ * 时间: 2020.7.21
+ * 描述：上传下载定制css
+ */
+
+#file-form fieldset:first-of-type {
+    margin-bottom: 80px;
+}
+
+#file-form fieldset:last-of-type {
+    margin-bottom: unset;
+}
+
+#file-form label {
+    color: lightgrey;
+    text-align: left;
+}
+
+#file-form .progress {
+    margin-top: 40px;
+}

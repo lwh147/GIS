@@ -4,14 +4,11 @@
  * 描述：管理员信息定制css
  */
 
-/*panel高度*/
-#index-body-adminInfo {
-    height: 750px;
-}
-
 /*panel标题*/
 #index-body-adminInfo .mypanel-header .media .media-right .media-heading {
     margin-top: 7px;
+    height: unset;
+    line-height: unset;
 }
 
 #index-body-adminInfo .mypanel-header .media .media-right h4 {

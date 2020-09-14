@@ -155,11 +155,13 @@
 
 /****************************自定义panel***********************/
 .mypanel {
-    margin: 80px auto;
-    padding: 50px 20px;
+    min-height: 750px;
+    margin: 40px auto;
+    padding: 40px 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.3);
     background-color: #282841;
+    overflow: auto;
 }
 
 .mypanel .mypanel-header {
@@ -180,6 +182,11 @@
     padding: 0;
 }
 
+.mypanel .mypanel-header .media .media-right h2 {
+    height: 72px;
+    line-height: 72px;
+}
+
 .mypanel .mypanel-title-content-split {
     margin: 10px auto;
     height: 4px;
@@ -194,6 +201,12 @@
 
 .mypanel .mypanel-content .row > div {
     padding-top: 1px;
+}
+
+.mypanel .mypanel-content .row form legend{
+    color: white;
+    border-bottom: solid 1px #2f734e;
+    margin-bottom: 40px;
 }
 
 /****************************自定义table***********************/
