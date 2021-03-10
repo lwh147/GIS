@@ -13,13 +13,20 @@
     <groupId>com</groupId>
     <artifactId>gis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <!-- war方式 -->
-    <packaging>war</packaging>
+    <!-- jar包方式 -->
+    <packaging>jar</packaging>
+    <!--<packaging>war</packaging>-->
     <name>gis</name>
     <description>Project about GIS</description>
 
     <properties>
-        <java.version>1.8</java.version>
+        <!--设置编码-->
+        <project.build.sorceEncoding>UTF-8</project.build.sorceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <!--设置java版本-->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -102,6 +109,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <scope>test</scope>
             <version>4.12</version>
         </dependency>
 
@@ -120,6 +128,17 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.gis.GisApplication</mainClass>
+                    <layout>ZIP</layout>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
