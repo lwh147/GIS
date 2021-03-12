@@ -20,11 +20,11 @@
     <description>Project about GIS</description>
 
     <properties>
-        <!--设置编码-->
-        <project.build.sorceEncoding>UTF-8</project.build.sorceEncoding>
+        <!-- 设置编码 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-        <!--设置java版本-->
+        <!-- 设置java版本 -->
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
