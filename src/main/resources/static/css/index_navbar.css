@@ -7,24 +7,24 @@
 
 /*导航栏*/
 #index-navbar .navbar-default {
-    background-color: #282841;
-    border-color: #2f734e;
-    color: #dddddd;
+    /*background-color: #282841;*/
+    /*border-color: #2f734e;*/
+    /*color: #dddddd;*/
 }
 
 /*适用于小屏幕的坍塌导航栏触发按钮*/
 #index-navbar .navbar-header button {
     border: none;
-    background-color: #383855;
+    /*background-color: #383855;*/
 }
 
 #index-navbar .navbar-header button:hover,
 #index-navbar .navbar-header button:active {
-    background-color: #474769;
+    /*background-color: #474769;*/
 }
 
 #index-navbar .navbar-default .navbar-header .icon-bar {
-    background-color: #2f734e;
+    /*background-color: #2f734e;*/
 }
 
 /*适用于小屏幕的坍塌导航栏内元素边框*/
@@ -34,12 +34,12 @@
 #index-navbar .navbar-default .navbar-collapse.collapsing > ul,
 #index-navbar .navbar-default .navbar-collapse.in > form,
 #index-navbar .navbar-default .navbar-collapse.collapsing > form {
-    border-color: #2f734e;
+    /*border-color: #2f734e;*/
 }
 
 /*导航栏文字*/
 #index-navbar .navbar-default a {
-    color: #dddddd;
+    /*color: #dddddd;*/
 }
 
 /*导航栏商标*/
@@ -55,7 +55,7 @@
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
     text-align: right;
-    color: #2f734e;
+    /*color: #2f734e;*/
     background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
     background-size: 400%;
     transition: width 0.3s;
@@ -99,24 +99,24 @@
 }
 
 #index-navbar .navbar-default .navbar-nav li.active a {
-    background-color: #2f734e;
-    color: white;
+    /*background-color: #2f734e;*/
+    /*color: white;*/
 }
 
 #index-navbar .navbar-default .navbar-nav li a:hover,
 #index-navbar .navbar-default .navbar-nav li a:active {
-    background-color: #2f734e;
-    color: white;
+    /*background-color: #2f734e;*/
+    /*color: white;*/
 }
 
 /*搜索框搜索按钮*/
 #index-navbar #index-navbar-searchFrom .btn-sec {
-    background-color: #383855;
+    /*background-color: #383855;*/
 }
 
 #index-navbar #index-navbar-searchFrom .btn-sec:hover,
 #index-navbar #index-navbar-searchFrom .btn-sec:active {
-    background-color: #474769;
+    /*background-color: #474769;*/
 }
 
 /*搜索框错误提示显示div*/
@@ -127,15 +127,15 @@
 
 /*导航栏管理员信息下拉标签已打开*/
 #index-navbar .navbar-default .navbar-nav .dropdown.open > a {
-    background-color: #2f734e;
-    color: white;
+    /*background-color: #2f734e;*/
+    /*color: white;*/
 }
 
 /*导航栏管理员信息下拉菜单框*/
 #index-navbar .navbar-default .navbar-nav .open .dropdown-menu {
     border: none;
     padding: 0;
-    background: #282841;
+    /*background: #282841;*/
 }
 
 #index-navbar .navbar-default .navbar-nav .open .dropdown-menu li a {
@@ -145,6 +145,6 @@
 #index-navbar .navbar-default .navbar-nav .open .dropdown-menu li:last-of-type :hover,
 #index-navbar .navbar-default .navbar-nav .open .dropdown-menu li:last-of-type :active {
     font-weight: bold;
-    color: #cd4f4d;
+    /*color: #cd4f4d;*/
     transition: all 0.3s;
 }

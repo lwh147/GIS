@@ -6,7 +6,7 @@
 
 /*表单文字*/
 #index-body-addAdmin #addAdmin-form {
-    color: #dddddd;
+    /*color: #dddddd;*/
     margin: 20px auto;
 }
 
@@ -21,11 +21,11 @@
 }
 
 #index-body-addAdmin #addAdmin-buttons button.btn-sec {
-    background-color: #383855;
+    /*background-color: #383855;*/
 }
 
 #index-body-addAdmin #addAdmin-buttons button.btn-sec:hover,
 #index-body-addAdmin #addAdmin-buttons button.btn-sec:active,
 #index-body-addAdmin #addAdmin-buttons button.btn-sec:focus {
-    background-color: #474769;
+    /*background-color: #474769;*/
 }

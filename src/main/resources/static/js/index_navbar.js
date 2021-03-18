@@ -53,7 +53,7 @@ function navbarTabListenerRegist() {
             return;
         //更改网页标题
         let cname = $(this).children().text();
-        $("title").text(cname + "—玉米的生长及环境数据管理系统");
+        $("title").text(cname + "—玉米数据管理系统");
         //取消当前激活菜单项
         navbar_navul.children("li.active").removeClass("active");
         //如果菜单项数等于4则要进行删除

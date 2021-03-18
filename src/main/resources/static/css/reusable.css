@@ -29,7 +29,7 @@
 ::-webkit-scrollbar-corner 边角，即两个滚动条的交汇处
 ::-webkit-resizer 两个滚动条的交汇处上用于通过拖动调整元素大小的小控件
 */
-::-webkit-scrollbar {
+/*::-webkit-scrollbar {
     width: 10px;
     height: 10px;
 }
@@ -45,17 +45,20 @@
 
 ::-webkit-scrollbar-thumb:hover {
     background-color: #474769;
-}
+}*/
 
 /****************************输入框***********************/
+/*
 .ipt-dark {
     border: 0;
     outline: none;
     background-color: #383855;
     color: #dddddd;
 }
+*/
 
 /****************************按钮***********************/
+/*
 .btn-main {
     border: none;
     background-color: #2f734e;
@@ -79,21 +82,22 @@
     background-color: #383855;
     color: white;
 }
+*/
 
 /****************************表单类模态框***********************/
 .modal-content-dark {
-    background-color: #1b1b2d;
-    color: #dddddd;
+    /*background-color: #1b1b2d;*/
+    /*color: #dddddd;*/
 }
 
 .modal-header-green {
     border: none;
-    background-color: #2f734e;
-    color: white;
+    /*background-color: #2f734e;*/
+    /*color: white;*/
 }
 
 .modal-header-green span {
-    color: white;
+    /*color: white;*/
 }
 
 .modal-body-foot {
@@ -109,18 +113,18 @@
 .alert-modal-header {
     border: none;
     padding: 5px 15px 5px 15px;
-    background-color: #2f734e;
-    color: white;
+    /*background-color: #2f734e;*/
+    /*color: white;*/
 }
 
 .alert-modal-header span {
-    color: white;
+    /*color: white;*/
 }
 
 .alert-modal-body {
     padding: 10px;
-    background-color: #1b1b2d;
-    color: #dddddd;
+    /*background-color: #1b1b2d;*/
+    /*color: #dddddd;*/
 }
 
 .alert-modal-body-foot {
@@ -129,29 +133,29 @@
 }
 
 /****************************验证信息颜色***********************/
-.has-error .form-control-feedback {
-    color: #cd4f4d;
-}
+/*.has-error .form-control-feedback {*/
+/*    color: #cd4f4d;*/
+/*}*/
 
-.has-error .help-block {
-    color: #cd4d4b;
-}
+/*.has-error .help-block {*/
+/*    color: #cd4d4b;*/
+/*}*/
 
-.has-error .control-label {
-    color: #cd4c4a;
-}
+/*.has-error .control-label {*/
+/*    color: #cd4c4a;*/
+/*}*/
 
-.has-success .form-control-feedback {
-    color: #3d9b68;
-}
+/*.has-success .form-control-feedback {*/
+/*    color: #3d9b68;*/
+/*}*/
 
-.has-success .help-block {
-    color: #3d9b68;
-}
+/*.has-success .help-block {*/
+/*    color: #3d9b68;*/
+/*}*/
 
-.has-success .control-label {
-    color: #3d9b68;
-}
+/*.has-success .control-label {*/
+/*    color: #3d9b68;*/
+/*}*/
 
 /****************************自定义panel***********************/
 .mypanel {
@@ -160,12 +164,12 @@
     padding: 40px 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.3);
-    background-color: #282841;
+    /*background-color: #282841;*/
     overflow: auto;
 }
 
 .mypanel .mypanel-header {
-    color: white;
+    /*color: white;*/
 }
 
 .mypanel .mypanel-header .media-heading {
@@ -191,7 +195,7 @@
     margin: 10px auto;
     height: 4px;
     border-radius: 2px;
-    background-color: #2f734e;
+    /*background-color: #2f734e;*/
 }
 
 .mypanel .mypanel-content {
@@ -204,32 +208,32 @@
 }
 
 .mypanel .mypanel-content .row form legend{
-    color: white;
-    border-bottom: solid 1px #2f734e;
+    /*color: white;*/
+    /*border-bottom: solid 1px #2f734e;*/
     margin-bottom: 40px;
 }
 
 /****************************自定义table***********************/
-.table {
-    background-color: #282841;
-    color: #dddddd;
-}
+/*.table {*/
+/*    background-color: #282841;*/
+/*    color: #dddddd;*/
+/*}*/
 
-.table tbody tr:hover {
-    background-color: #1b1b2d;
-    color: white;
-}
+/*.table tbody tr:hover {*/
+/*    background-color: #1b1b2d;*/
+/*    color: white;*/
+/*}*/
 
-.table thead tr th {
-    border: none;
-    background-color: #35875c;
-    color: white;
-}
+/*.table thead tr th {*/
+/*    border: none;*/
+/*    background-color: #35875c;*/
+/*    color: white;*/
+/*}*/
 
 .table tbody tr td,
 .table tbody tr th {
     border-left: none;
     border-right: none;
-    border-top: 1px solid #35875c;
-    border-bottom: 1px solid #35875c;
+    /*border-top: 1px solid #35875c;*/
+    /*border-bottom: 1px solid #35875c;*/
 }

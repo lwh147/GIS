@@ -24,8 +24,8 @@
     margin-left: -200px;
     width: 200px;
     height: 710px;
-    background-color: #282841;
-    color: #dddddd;
+    /*background-color: #282841;*/
+    /*color: #dddddd;*/
     transition: all 0.5s;
 }
 
@@ -62,8 +62,8 @@
     padding: 0 0 0 20px;
     border: none;
     border-radius: 2px;
-    background-color: #383855;
-    color: #dddddd;
+    /*background-color: #383855;*/
+    /*color: #dddddd;*/
 }
 
 .sidebar > ul li a {
@@ -74,14 +74,14 @@
     line-height: 40px;
     text-decoration: none;
     text-align: left;
-    color: #dddddd;
+    /*color: #dddddd;*/
     display: block;
     transition: all 0.3s;
 }
 
 .sidebar ul li a:hover {
-    color: white;
-    background-color: #2f734e;
+    /*color: white;*/
+    /*background-color: #2f734e;*/
 }
 
 /*侧边栏标题*/
@@ -93,15 +93,15 @@
     height: 50px;
     font-size: 25px;
     line-height: 50px;
-    color: white;
-    background-color: #2f734e;
+    /*color: white;*/
+    /*background-color: #2f734e;*/
     display: block;
     cursor: default;
 }
 
 .sidebar > ul > li:first-of-type a:hover {
-    color: white;
-    background-color: #2f734e;
+    /*color: white;*/
+    /*background-color: #2f734e;*/
 }
 
 /*子菜单项大小*/
@@ -112,12 +112,12 @@
 }
 
 .sidebar ul li ul li.active {
-    color: white;
-    background-color: #2f734e;
+    /*color: white;*/
+    /*background-color: #2f734e;*/
 }
 
 .sidebar ul li ul li.active a {
-    color: white;
+    /*color: white;*/
 }
 
 /*侧边栏开关按钮*/
@@ -138,17 +138,17 @@
     text-decoration: none;
     text-align: center;
     cursor: pointer;
-    color: #dddddd;
-    background-color: #474769;
+    /*color: #dddddd;*/
+    /*background-color: #474769;*/
     transition: all 0.3s;
 }
 
 .sidebar .btn-sidebar:hover {
-    color: white;
+    /*color: white;*/
 }
 
 .sidebar .btn-sidebar:focus {
-    color: white;
+    /*color: white;*/
 }
 
 .sidebar .btn-sidebar:before {

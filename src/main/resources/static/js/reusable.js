@@ -267,7 +267,7 @@ function screenDataByAttr(chartData, attrName, attrValue) {
  * 描述：初始化图表节点
  */
 function getAndInitChart(chartDomId, theme) {
-    theme = theme || "purple";
+    // theme = theme || "purple";
 
     let chartDom = document.getElementById(chartDomId);
     return echarts.init(chartDom, theme)

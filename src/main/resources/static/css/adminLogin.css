@@ -15,13 +15,14 @@ body {
 
 /*登录框所在区域*/
 #loginFormArea {
-    margin-top: 50px;
+    margin-top: 100px;
     border-radius: 5px;
     padding-bottom: 20px;
     padding-left: 30px;
     padding-right: 30px;
-    background-color: #1b1b2d;
-    color: #dddddd;
+    /*background-color: #1b1b2d;*/
+    background-color: #ffffff;
+    color: #000000;
     box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.3);
 }
 
@@ -31,7 +32,7 @@ body {
     height: 30px;
     border-bottom: 1px solid #cccccc;
     text-align: center;
-    color: white;
+    color: #000000;
 }
 
 /*登录、重置按钮*/

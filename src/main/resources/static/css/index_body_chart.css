@@ -9,8 +9,8 @@
     min-height: 800px;
     margin: 0;
     padding: 0;
-    color: #dddddd;
-    background-color: #1b1b2d;
+    /*color: #dddddd;*/
+    /*background-color: #1b1b2d;*/
 }
 
 #index-body-chart-container {
@@ -22,27 +22,27 @@
 
 /*图表展示区标题*/
 #index-body-chart-container .navbar {
-    border-bottom: 1px solid #2f734e;
-    color: #dddddd;
+    /*border-bottom: 1px solid #2f734e;*/
+    /*color: #dddddd;*/
 }
 
 /*标题区域超链接*/
 #index-body-chart-container .navbar .navbar-right li a {
-    color: #dddddd;
+    /*color: #dddddd;*/
     transition: all 0.3s;
 }
 
 #index-body-chart-container .navbar .navbar-right li a:hover,
 #index-body-chart-container .navbar .navbar-right li a:active {
-    background-color: #2f734e;
-    color: white;
+    /*background-color: #2f734e;*/
+    /*color: white;*/
 }
 
 /*标题区下拉菜单*/
 #index-body-chart-container .navbar .open .dropdown-menu {
     border: none;
     padding: 0;
-    background: #282841;
+    /*background: #282841;*/
 }
 
 /*标题区数据选择按钮位置*/
@@ -77,7 +77,7 @@
     margin-top: 20px;
     padding: 0 10px;
     border-radius: 5px;
-    background-color: #282841;
+    background-color: #e0e0e0;
     transition: all 0.3s;
 }
 
